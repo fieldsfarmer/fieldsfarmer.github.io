@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://fieldsfarmer.github.io/2016/10/20/python-vs-js-on-split/index.html">
 <meta property="og:site_name" content="my westworld">
 <meta property="og:description" content="JavaScript (Node.js v6.7.0)123456789var s = &apos;abc&apos;;s.split();   // [ &apos;abc&apos; ]s.split(&apos;&apos;); // [ &apos;a&apos;, &apos;b&apos;, &apos;c&apos; ]&apos;hello world&apos;.split();     // [ &apos;hello world&apos; ]&apos;hello world&apos;.split(&apos; &apos;);  // [ &apos;hello&apos;, &apos;wor">
-<meta property="og:updated_time" content="2016-10-20T14:32:35.000Z">
+<meta property="og:updated_time" content="2016-10-20T15:25:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python vs js">
 <meta name="twitter:description" content="JavaScript (Node.js v6.7.0)123456789var s = &apos;abc&apos;;s.split();   // [ &apos;abc&apos; ]s.split(&apos;&apos;); // [ &apos;a&apos;, &apos;b&apos;, &apos;c&apos; ]&apos;hello world&apos;.split();     // [ &apos;hello world&apos; ]&apos;hello world&apos;.split(&apos; &apos;);  // [ &apos;hello&apos;, &apos;wor">
@@ -81,7 +81,7 @@
       
         <p>JavaScript (Node.js v6.7.0)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'abc'</span>;</div><div class="line">s.split();   <span class="comment">// [ 'abc' ]</span></div><div class="line">s.split(<span class="string">''</span>); <span class="comment">// [ 'a', 'b', 'c' ]</span></div><div class="line"></div><div class="line"><span class="string">'hello world'</span>.split();     <span class="comment">// [ 'hello world' ]</span></div><div class="line"><span class="string">'hello world'</span>.split(<span class="string">' '</span>);  <span class="comment">// [ 'hello', 'world' ]</span></div><div class="line"></div><div class="line"><span class="string">''</span>.split();     <span class="comment">// [ '' ]</span></div><div class="line"><span class="string">''</span>.split(<span class="string">' '</span>);  <span class="comment">// [ '' ]</span></div></pre></td></tr></table></figure></p>
 <p>Python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'abc'</span></div><div class="line">s.split()    <span class="comment"># ['abc']</span></div><div class="line">s.split(<span class="string">''</span>)  <span class="comment"># error! empty separator</span></div><div class="line">list(s)      <span class="comment"># ['a', 'b', 'c']</span></div><div class="line"></div><div class="line"><span class="string">'hello world'</span>.split()     <span class="comment"># ['hello', 'world']</span></div><div class="line"><span class="string">'hello world'</span>.split(<span class="string">' '</span>)  <span class="comment"># ['hello', 'world']</span></div><div class="line"></div><div class="line"><span class="string">''</span>.split()     <span class="comment"># []</span></div><div class="line"><span class="string">''</span>.split(<span class="string">' '</span>)  <span class="comment"># ['']</span></div></pre></td></tr></table></figure></p>
-<p>Python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">''</span>.join(sorted(<span class="string">'bca'</span>)) <span class="comment">#'abc'</span></div></pre></td></tr></table></figure></p>
+<p>Python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">''</span>.join(sorted(<span class="string">'bca'</span>)) <span class="comment">#'abc'</span></div><div class="line"><span class="string">''</span>.join(sorted(list(<span class="string">'bca'</span>)))</div></pre></td></tr></table></figure></p>
 <p>JavaScript<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">'bca'</span>.split(<span class="string">''</span>).sort().join(<span class="string">''</span>) <span class="comment">// 'abc'</span></div></pre></td></tr></table></figure></p>
 
       
@@ -90,12 +90,22 @@
     
       <footer class="article-footer">
         
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-javascript/">python, javascript</a></li></ul>
+
       </footer>
     
   </div>
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/10/20/valid-ip/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+        
+          valid ip
+        
+      </div>
+    </a>
   
   
     <a href="/2016/10/20/hello-world/" id="article-nav-older" class="article-nav-link-wrap">

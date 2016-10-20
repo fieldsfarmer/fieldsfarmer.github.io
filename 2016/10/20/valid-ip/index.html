@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>valid ip - my westworld</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="12345678910111213141516&amp;apos;&amp;apos;&amp;apos;An IP address is a String in the form &amp;quot;A.B.C.D&amp;quot;, where thevalues of A, B, C, D range from 0 to 255. Leading zeros areallowed, but the length cannot b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="valid ip">
+<meta property="og:url" content="https://fieldsfarmer.github.io/2016/10/20/valid-ip/index.html">
+<meta property="og:site_name" content="my westworld">
+<meta property="og:description" content="12345678910111213141516&amp;apos;&amp;apos;&amp;apos;An IP address is a String in the form &amp;quot;A.B.C.D&amp;quot;, where thevalues of A, B, C, D range from 0 to 255. Leading zeros areallowed, but the length cannot b">
+<meta property="og:updated_time" content="2016-10-20T15:25:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="valid ip">
+<meta name="twitter:description" content="12345678910111213141516&amp;apos;&amp;apos;&amp;apos;An IP address is a String in the form &amp;quot;A.B.C.D&amp;quot;, where thevalues of A, B, C, D range from 0 to 255. Leading zeros areallowed, but the length cannot b">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/atom.xml">Rss</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fieldsfarmer.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-valid-ip" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      valid ip
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/10/20/valid-ip/" class="article-date">
+  <time datetime="2016-10-20T14:57:56.000Z" itemprop="datePublished">2016-10-20</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&apos;&apos;&apos;</div><div class="line">An IP address is a String in the form &quot;A.B.C.D&quot;, where the</div><div class="line">values of A, B, C, D range from 0 to 255. Leading zeros are</div><div class="line">allowed, but the length cannot be larger then 3.</div><div class="line">Valid:</div><div class="line">000.12.12.034</div><div class="line">121.234.21.12</div><div class="line">23.45.12.56</div><div class="line"></div><div class="line">Invalid:</div><div class="line">000.12.34.56.78</div><div class="line">666.666.12.34</div><div class="line">.12.34.56.78</div><div class="line">12.23.34.56.</div><div class="line">I.am.not.</div><div class="line">&apos;&apos;&apos;</div></pre></td></tr></table></figure>
+<p>Python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">isOK</span><span class="params">(s)</span>:</span></div><div class="line">    u = <span class="string">r"^(\d&#123;1,3&#125;)\.(\d&#123;1,3&#125;)\.(\d&#123;1,3&#125;)\.(\d&#123;1,3&#125;)$"</span></div><div class="line">    m = re.match(u,s)</div><div class="line">    <span class="keyword">if</span> m:</div><div class="line">        m = list(m.groups())</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> m:</div><div class="line">            <span class="keyword">if</span> int(i)&gt;<span class="number">255</span>:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    goods = [<span class="string">'000.12.12.034'</span>,<span class="string">'121.234.21.12'</span>,<span class="string">'23.45.12.56'</span>]</div><div class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> goods:</div><div class="line">        print(isOK(s))</div><div class="line">    print(<span class="string">'=========='</span>)</div><div class="line">    bads = [<span class="string">'000.12.34.56.78'</span>,<span class="string">'666.666.12.34'</span>,<span class="string">'.12.34.56.78'</span>,</div><div class="line">            <span class="string">'12.23.34.56.'</span>,<span class="string">'I.am.not.'</span>]</div><div class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> bads:</div><div class="line">        print(isOK(s))</div><div class="line"></div><div class="line">main()</div></pre></td></tr></table></figure></p>
+<p>JS<br>```</p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/regex-python-java-javascript/">regex, python, java, javascript</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/20/python-vs-js-on-split/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python vs js&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 fieldsfarmer&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
