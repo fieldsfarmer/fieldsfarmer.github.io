@@ -150,7 +150,7 @@
 
 
     
-      <article id="post-python-vs-js-on-split" class="article article-type-post" itemscope itemprop="blogPost">
+      <article id="post-string-split-and-sort" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -158,14 +158,14 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/20/python-vs-js-on-split/">python vs js</a>
+      <a class="article-title" href="/2016/10/20/string-split-and-sort/">python vs js</a>
     </h1>
   
 
       </header>
     
     <div class="article-meta">
-      <a href="/2016/10/20/python-vs-js-on-split/" class="article-date">
+      <a href="/2016/10/20/string-split-and-sort/" class="article-date">
   <time datetime="2016-10-20T14:17:14.000Z" itemprop="datePublished">2016-10-20</time>
 </a>
       
@@ -177,6 +177,7 @@
 <p>Python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'abc'</span></div><div class="line">s.split()    <span class="comment"># ['abc']</span></div><div class="line">s.split(<span class="string">''</span>)  <span class="comment"># error! empty separator</span></div><div class="line">list(s)      <span class="comment"># ['a', 'b', 'c']</span></div><div class="line"></div><div class="line"><span class="string">'hello world'</span>.split()     <span class="comment"># ['hello', 'world']</span></div><div class="line"><span class="string">'hello world'</span>.split(<span class="string">' '</span>)  <span class="comment"># ['hello', 'world']</span></div><div class="line"></div><div class="line"><span class="string">''</span>.split()     <span class="comment"># []</span></div><div class="line"><span class="string">''</span>.split(<span class="string">' '</span>)  <span class="comment"># ['']</span></div></pre></td></tr></table></figure></p>
 <p>Python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">''</span>.join(sorted(<span class="string">'bca'</span>)) <span class="comment">#'abc'</span></div><div class="line"><span class="string">''</span>.join(sorted(list(<span class="string">'bca'</span>)))</div></pre></td></tr></table></figure></p>
 <p>JavaScript<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">'bca'</span>.split(<span class="string">''</span>).sort().join(<span class="string">''</span>) <span class="comment">// 'abc'</span></div></pre></td></tr></table></figure></p>
+<p>Java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span>[] chars = s.toCharArray();</div><div class="line">Arrays.sort(chars);</div><div class="line">String sortedString = <span class="keyword">new</span> String(chars);</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -184,7 +185,7 @@
     
       <footer class="article-footer">
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
       </footer>
     
