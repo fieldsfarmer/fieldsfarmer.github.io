@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>factory pattern example - my westworld</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="The classical one:1234567891011121314151617181920212223242526272829303132333435363738//ShapeFactory.javainterface Shape&amp;#123;  void draw();&amp;#125;class Rectangle implements Shape&amp;#123;  @Override  publ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="factory pattern example">
+<meta property="og:url" content="https://fieldsfarmer.github.io/2016/10/21/factory-pattern-example/index.html">
+<meta property="og:site_name" content="my westworld">
+<meta property="og:description" content="The classical one:1234567891011121314151617181920212223242526272829303132333435363738//ShapeFactory.javainterface Shape&amp;#123;  void draw();&amp;#125;class Rectangle implements Shape&amp;#123;  @Override  publ">
+<meta property="og:updated_time" content="2016-10-23T12:11:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="factory pattern example">
+<meta name="twitter:description" content="The classical one:1234567891011121314151617181920212223242526272829303132333435363738//ShapeFactory.javainterface Shape&amp;#123;  void draw();&amp;#125;class Rectangle implements Shape&amp;#123;  @Override  publ">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/atom.xml">Rss</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fieldsfarmer.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-factory-pattern-example" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      factory pattern example
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/10/21/factory-pattern-example/" class="article-date">
+  <time datetime="2016-10-21T22:34:25.000Z" itemprop="datePublished">2016-10-21</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The classical <a href="https://www.tutorialspoint.com/design_pattern/factory_pattern.htm" target="_blank" rel="external">one</a>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ShapeFactory.java</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Shape</span></span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"Inside Rectangle::draw() method."</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"Inside Circle::draw() method."</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span></span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> Shape <span class="title">getShape</span><span class="params">(String shape)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(shape == <span class="keyword">null</span>)&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(shape == <span class="string">"Rectangle"</span>)&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Rectangle();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(shape == <span class="string">"Circle"</span>)&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Circle();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    Test t = <span class="keyword">new</span> ShapeFactory();</div><div class="line">    Shape s1 = t.getShape(<span class="string">"Rectangle"</span>);</div><div class="line">    Shape s2 = t.getShape(<span class="string">"Circle"</span>);</div><div class="line">    s1.draw();</div><div class="line">    s2.draw();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>The following might not good.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// FoodFactory.java</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span></span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">serve</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"I'm serving "</span>+<span class="keyword">this</span>.getClass().getName());</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> <span class="keyword">extends</span> <span class="title">Food</span></span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Meat</span> <span class="keyword">extends</span> <span class="title">Food</span></span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FoodFactory</span></span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> Food <span class="title">getFood</span><span class="params">(String f)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(f.equals(<span class="string">"Fruit"</span>))&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Fruit();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(f.equals(<span class="string">"Meat"</span>))&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Meat();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No food found with name "</span> + f);</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    Test t = <span class="keyword">new</span> FoodFactory();</div><div class="line">    Food f1 = t.getFood(<span class="string">"Fruit"</span>); </div><div class="line">    Food f2 = t.getFood(<span class="string">"Meat"</span>);  </div><div class="line">    f1.serve();                   <span class="comment">// I'm serving Fruit</span></div><div class="line">    f2.serve();                   <span class="comment">// I'm serving Meat</span></div><div class="line">    System.out.println(f1.getClass().getSuperclass().getName()); <span class="comment">// Food</span></div><div class="line">    System.out.println(f1.getClass().getName()); <span class="comment">// Fruit</span></div><div class="line">    System.out.println(f2.getClass().getName()); <span class="comment">// Meat</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/23/CSS-notes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+        
+          CSS notes
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/21/inheritance-for-several-languages/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">inheritance for several languages&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 fieldsfarmer&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
