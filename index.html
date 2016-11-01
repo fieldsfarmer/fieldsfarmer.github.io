@@ -53,6 +53,53 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-reservoir-sample" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/31/reservoir-sample/">reservoir sample</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/10/31/reservoir-sample/" class="article-date">
+  <time datetime="2016-11-01T00:54:22.000Z" itemprop="datePublished">2016-10-31</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://en.wikipedia.org/wiki/Reservoir_sampling" target="_blank" rel="external">Algorithm R</a><br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">reservoir_sample</span><span class="params">(arr, k)</span>:</span></div><div class="line">  res = []</div><div class="line">  t = []</div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</div><div class="line">    t.append(arr[i]);</div><div class="line">  res.append(t)</div><div class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> range(k,len(arr)):</div><div class="line">    t = list(t)</div><div class="line">    i = random.randint(<span class="number">0</span>,j)</div><div class="line">    <span class="keyword">if</span> i&lt;k:</div><div class="line">      t[i]=arr[j]</div><div class="line">    res.append(t)</div><div class="line">  <span class="keyword">return</span> res</div><div class="line">arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>]</div><div class="line">print(reservoir_sample(arr, <span class="number">2</span>))</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-flatten-array" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -76,7 +123,8 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="http://stackoverflow.com/questions/27266550/how-to-flatten-nested-array-in-javascript" target="_blank" rel="external">ref</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//recursive ways</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> res = [];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;arr.length; ++i)&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(arr[i]))&#123;</div><div class="line">      res = res.concat(f1(arr[i]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      res.push(arr[i])</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="comment">//ES6</span></div><div class="line"><span class="keyword">const</span> f2 = <span class="function">(<span class="params">arr</span>)=&gt;</span>arr.reduce(a,b)=&gt;a.concat(<span class="built_in">Array</span>.isArray(b)?f2(b):b, []);</div><div class="line"></div><div class="line"><span class="comment">//iterative way</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> list = arr.slice(),</div><div class="line">    res = [];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> node = list.shift(); node !== <span class="literal">undefined</span>; node = list.shift())&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(node))&#123;</div><div class="line">      [].unshift.apply(list, node);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      res.push(node);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">var</span> arr = [[[<span class="number">1</span>],<span class="string">'a'</span>],[&#123;<span class="string">'b'</span>:<span class="number">1</span>&#125;,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>],[<span class="number">5</span>,[<span class="number">6</span>,[<span class="number">7</span>]]]];</div><div class="line">f1(arr); <span class="comment">//[ 1, 'a', &#123; b: 1 &#125;, 2, 3, 4, 5, 6, 7 ]</span></div></pre></td></tr></table></figure></p>
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//recursive ways</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> res = [];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;arr.length; ++i)&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(arr[i]))&#123;</div><div class="line">      res = res.concat(f1(arr[i]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      res.push(arr[i])</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="comment">//ES6</span></div><div class="line"><span class="keyword">const</span> f2 = <span class="function">(<span class="params">arr</span>)=&gt;</span>arr.reduce(a,b)=&gt;a.concat(<span class="built_in">Array</span>.isArray(b)?f2(b):b, []);</div><div class="line"></div><div class="line"><span class="comment">//iterative way</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> list = arr.slice(),</div><div class="line">    res = [];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> node = list.shift(); node !== <span class="literal">undefined</span>; node = list.shift())&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(node))&#123;</div><div class="line">      [].unshift.apply(list, node);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      res.push(node);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">var</span> arr = [[[<span class="number">1</span>],<span class="string">'a'</span>],[&#123;<span class="string">'b'</span>:<span class="number">1</span>&#125;,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>],[<span class="number">5</span>,[<span class="number">6</span>,[<span class="number">7</span>]]]];</div><div class="line">f1(arr); <span class="comment">//[ 1, 'a', &#123; b: 1 &#125;, 2, 3, 4, 5, 6, 7 ]</span></div></pre></td></tr></table></figure>
+<p><a href="http://stackoverflow.com/questions/27266550/how-to-flatten-nested-array-in-javascript" target="_blank" rel="external">ref</a></p>
 
       
     </div>
