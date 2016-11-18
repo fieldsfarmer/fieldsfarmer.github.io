@@ -53,6 +53,282 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-npm-install-commands" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/17/npm-install-commands/">npm install commands</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/11/17/npm-install-commands/" class="article-date">
+  <time datetime="2016-11-17T20:54:52.000Z" itemprop="datePublished">2016-11-17</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>npm install -g [name]</code> install globally</p>
+<p><code>npm install --save [name]</code> this name will be installed locally and shown in the package.json under the attribute: <code>depenencies</code></p>
+<p><code>npm install --save-dev [name]</code> installed locally and shown under <code>devDependencies</code></p>
+<p>After deleting the ‘node_modules’ folder, just run <code>npm install</code>, it will install the above two</p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-react-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/16/react-notes/">react notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/11/16/react-notes/" class="article-date">
+  <time datetime="2016-11-17T00:58:04.000Z" itemprop="datePublished">2016-11-16</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>There are two types of data in a component:</p>
+<ul>
+<li>props: get passed into a component as initialized; for example<br><code>ReactDom.render(&lt;MyList name=&quot;Kevin&quot;/&gt;, document.getElementById(&#39;app&#39;))</code><br>A component cannot update the props, all you can do is set the default value in <code>getDefaultProps</code> function in the component.</li>
+<li>state: internally maintained and updated by the component.</li>
+</ul>
+<hr>
+<p>Two ways of constructing a component</p>
+<ol>
+<li>using <code>var myComponent = React.createClass({ ... })</code> <a href="http://codepen.io/fieldsfarmer/pen/dOpxKe" target="_blank" rel="external">example</a></li>
+<li>using <code>class MyCompoent extends React.Component{ ... }</code> <a href="http://codepen.io/fieldsfarmer/pen/GNjVYz" target="_blank" rel="external">example</a><br>Note: No Autobinding  Methods follow the same semantics as regular ES6 classes, meaning that they don’t automatically bind this to the instance. You’ll have to explicitly use .bind(this) or arrow functions. See <a href="http://es6.ruanyifeng.com/#docs/class" target="_blank" rel="external">here</a>.</li>
+<li>Rewrite the above first example using nested component in <a href="http://codepen.io/fieldsfarmer/pen/zooPXx" target="_blank" rel="external">here</a>.</li>
+<li>Rewrite the second using nested component in <a href="http://codepen.io/fieldsfarmer/pen/BQQYWy" target="_blank" rel="external">here</a>.</li>
+<li>A more complex <a href="http://codepen.io/fieldsfarmer/pen/dOOmGy" target="_blank" rel="external">example</a>.</li>
+</ol>
+<hr>
+<p>Two types of component</p>
+<ul>
+<li>presentational component: render something to the browser</li>
+<li>container component: maintain state and render children</li>
+</ul>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-js/">react.js</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-js-training-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/14/js-training-notes/">js training notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/11/14/js-training-notes/" class="article-date">
+  <time datetime="2016-11-15T01:39:04.000Z" itemprop="datePublished">2016-11-14</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I decide to follow <a href="https://github.com/ruanyf/jstraining" target="_blank" rel="external">this free open course</a> on Javascript. It is mainly about React.js and Node.js.</p>
+<ul>
+<li><p><a href="http://codepen.io/fieldsfarmer/pen/QGKQvp" target="_blank" rel="external">React with jQuery Ajax</a>. Note there would be error if you do <code>ReactDOM.render(&lt;MyList/&gt;, $(&#39;#example&#39;))</code>. You should use <code>document.getElementById(&#39;example&#39;)</code>.</p>
+</li>
+<li><p>For <a href="https://github.com/ruanyf/jstraining/blob/master/demos/README.md#练习-5" target="_blank" rel="external">this exercise</a> of which the first is to calculate the time of dealing request and the second is to deal with query. The full code is <a href="https://gist.github.com/fieldsfarmer/cf5ed4cd2dcbdab2a64592453ed09773" target="_blank" rel="external">here</a>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">router.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Thers is a requesting.'</span>);</div><div class="line">  <span class="keyword">let</span> pre = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">  next();</div><div class="line">  <span class="keyword">let</span> cur = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Time elapsed:'</span>, cur-pre, <span class="string">'ms'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> tmp = <span class="string">'World'</span>;</div><div class="line">  <span class="keyword">if</span>(req.query.name)&#123;</div><div class="line">    tmp = req.query.name;</div><div class="line">  &#125;</div><div class="line">  res.send(<span class="string">`&lt;h1&gt;Hello <span class="subst">$&#123;tmp&#125;</span>&lt;/h1&gt;`</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-ninja-js-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/08/ninja-js-notes/">ninja js notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/11/08/ninja-js-notes/" class="article-date">
+  <time datetime="2016-11-08T14:38:29.000Z" itemprop="datePublished">2016-11-08</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>If you’ve done any programming to create graphical user interface (GUI) desktop applications, you’ll know that most are written in a similar fashion:<br>■  Set up the user interface<br>■  Enter a loop waiting for events to occur<br>■  Invoke handlers (also called listeners) for those events<br>Programming for the browser is no different, except that our code isn’t responsible for running the event loop and dispatching events; the browser handles that for us.</p>
+<p>Our responsibility is to set up the handlers for the various events that can occur in the browser. These events are placed in an event queue </p>
+<p>The following types of events can occur, among others:<br>■ Browser events, such as when a page is finished loading or when it’s to be unloaded<br>■ Network events, such as responses to an Ajax request<br>■ User events, such as mouse clicks, mouse moves, or keypresses<br>■ Timer events, such as when a timeout expires or an interval fires</p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-css-flex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/04/css-flex/">css flex</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/11/04/css-flex/" class="article-date">
+  <time datetime="2016-11-04T21:41:27.000Z" itemprop="datePublished">2016-11-04</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">A B C            E</div><div class="line">------------------</div></pre></td></tr></table></figure>
+<ul>
+<li><a href="http://codepen.io/fieldsfarmer/pen/YpzMBY/" target="_blank" rel="external">example 1</a>. Here we use: <code>justify-content: space-between</code></li>
+<li><a href="http://codepen.io/fieldsfarmer/pen/aBOOvm" target="_blank" rel="external">Another one</a>. Here for the last one we use: <code>margin-left: auto</code></li>
+</ul>
+<ul>
+<li><p><a href="http://codepen.io/fieldsfarmer/pen/xRxoXB" target="_blank" rel="external">An example of flex and modal</a></p>
+</li>
+<li><p><a href="http://codepen.io/fieldsfarmer/pen/JbdoWj" target="_blank" rel="external">Example of sticky footer using flex</a> which follows <a href="http://codepen.io/devatrox/pen/wztlx" target="_blank" rel="external">this example</a><br>Here <code>flex</code> is shorthand for <code>flex-grow</code>, <code>flex-shrink</code> and <code>flex-basis</code> combined. <a href="https://www.w3.org/TR/css-flexbox-1/#flex-common" target="_blank" rel="external">More information</a></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">section</span>&#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">0</span> auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-rate-checker" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -265,7 +541,9 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'underscore'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncForEach</span>(<span class="params">arr,iterator,callback</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> callOnce = _.once(callback), remaining = arr.length;</div><div class="line">  arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    iterator(item, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">      remaining -= <span class="number">1</span>;</div><div class="line">      <span class="keyword">if</span>(err || remaining === <span class="number">0</span>)&#123;</div><div class="line">        callOnce(err);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncForEach</span>(<span class="params">arr,iterator,callback</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> callOnce = _.once(callback), remaining = arr.length;</div><div class="line">  arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    iterator(item, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">      remaining -= <span class="number">1</span>;</div><div class="line">      <span class="keyword">if</span>(err)&#123;</div><div class="line">        remaining = <span class="number">0</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span>(remaining === <span class="number">0</span>)&#123;</div><div class="line">        callOnce(err);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">asyncForEach([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],<span class="function"><span class="keyword">function</span>(<span class="params">item, callback</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">  callback(<span class="literal">null</span>);</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'done'</span>)</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// 3</span></div><div class="line"><span class="comment">// done</span></div><div class="line"></div><div class="line"><span class="comment">//function sayHello() &#123;</span></div><div class="line"><span class="comment">//  console.log('Hello, World');</span></div><div class="line"><span class="comment">//&#125;</span></div><div class="line"><span class="comment">//_.times(5, sayHello);</span></div></pre></td></tr></table></figure>
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'underscore'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncForEach</span>(<span class="params">arr,iterator,callback</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> callOnce = _.once(callback), remaining = arr.length;</div><div class="line">  arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    iterator(item, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">      remaining -= <span class="number">1</span>;</div><div class="line">      <span class="keyword">if</span>(err || remaining === <span class="number">0</span>)&#123;</div><div class="line">        callOnce(err);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncForEach</span>(<span class="params">arr,iterator,callback</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> callOnce = _.once(callback), remaining = arr.length;</div><div class="line">  arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    iterator(item, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">      remaining -= <span class="number">1</span>;</div><div class="line">      <span class="keyword">if</span>(err)&#123;</div><div class="line">        remaining = <span class="number">0</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span>(remaining === <span class="number">0</span>)&#123;</div><div class="line">        callOnce(err);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">asyncForEach([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],<span class="function"><span class="keyword">function</span>(<span class="params">item, callback</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">  callback(<span class="literal">null</span>);</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'done'</span>)</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// 3</span></div><div class="line"><span class="comment">// done</span></div></pre></td></tr></table></figure>
+<p>An interesting fact;<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;list.length; ++i)&#123;</div><div class="line">    <span class="keyword">if</span>(list[i]==<span class="number">1</span>)&#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(list[i]);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">printExcept1</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(item == <span class="number">1</span>)&#123;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(item);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> list = [<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;list.length; ++i)&#123;</div><div class="line">    printExcept1(list[i]);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> list = [<span class="number">1</span>,<span class="number">6</span>,<span class="number">7</span>];</div><div class="line">  list.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(item == <span class="number">1</span>)&#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(item);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line">f1(); <span class="comment">// nothing</span></div><div class="line">f2(); <span class="comment">// 4 5</span></div><div class="line">f3(); <span class="comment">// 6 7</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myForEach</span>(<span class="params">list,callback</span>)</span>&#123;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;list.length; ++i)&#123;</div><div class="line">    callback.call(list,i);</div><div class="line">    <span class="comment">//callback.call(list[i],i);</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> list = [<span class="number">1</span>,<span class="number">8</span>,<span class="number">9</span>];</div><div class="line">myForEach(list, <span class="function"><span class="keyword">function</span>(<span class="params">idex</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(list[idex] == <span class="number">1</span>)&#123;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(list[idex]);</div><div class="line">  &#125;</div><div class="line">&#125;)  <span class="comment">// 8 9</span></div></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -273,268 +551,6 @@
       <footer class="article-footer">
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-CSS-notes" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/23/CSS-notes/">CSS notes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/10/23/CSS-notes/" class="article-date">
-  <time datetime="2016-10-24T00:14:35.000Z" itemprop="datePublished">2016-10-23</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="Difference-between-inline-block-inline-block"><a href="#Difference-between-inline-block-inline-block" class="headerlink" title="Difference between inline, block, inline-block"></a>Difference between <code>inline, block, inline-block</code></h5><ul>
-<li>block elements: <code>div, form, table, p, h1 - h6, ol, ul, li</code> etc</li>
-<li>inline elements: <code>span, img, a, i, strong, em, input, select</code> etc</li>
-</ul>
-<p><code>display:block</code></p>
-<ul>
-<li>block元素会独占一行，多个block元素会各自新起一行。默认情况下，block元素宽度自动填满其父元素宽度。</li>
-<li>block元素可以设置width,height属性。块级元素即使设置了宽度,仍然是独占一行。</li>
-<li>block元素可以设置margin和padding属性。</li>
-</ul>
-<p><code>display:inline</code></p>
-<ul>
-<li>inline元素不会独占一行，多个相邻的行内元素会排列在同一行里，直到一行排列不下，才会新换一行，其宽度随元素的内容而变化。</li>
-<li>inline元素设置width,height属性无效。</li>
-<li>inline元素的margin和padding属性，水平方向的padding-left, padding-right, margin-left, margin-right都产生边距效果；但竖直方向的padding-top, padding-bottom, margin-top, margin-bottom不会产生边距效果。</li>
-</ul>
-<p><a href="http://www.w3schools.com/css/css_inline-block.asp" target="_blank" rel="external"><code>display:inline-block</code></a></p>
-<ul>
-<li>简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现。之后的内联对象会被排列在同一行内。比如我们可以给一个link（a元素）inline-block属性值，使其既具有block的宽度高度特性又具有inline的同行特性。</li>
-</ul>
-
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-factory-pattern-example" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/21/factory-pattern-example/">factory pattern example</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/10/21/factory-pattern-example/" class="article-date">
-  <time datetime="2016-10-21T22:34:25.000Z" itemprop="datePublished">2016-10-21</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>The classical <a href="https://www.tutorialspoint.com/design_pattern/factory_pattern.htm" target="_blank" rel="external">one</a>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ShapeFactory.java</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Shape</span></span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"Inside Rectangle::draw() method."</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">implements</span> <span class="title">Shape</span></span>&#123;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"Inside Circle::draw() method."</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span></span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> Shape <span class="title">getShape</span><span class="params">(String shape)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(shape == <span class="keyword">null</span>)&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(shape == <span class="string">"Rectangle"</span>)&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Rectangle();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(shape == <span class="string">"Circle"</span>)&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Circle();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    Test t = <span class="keyword">new</span> ShapeFactory();</div><div class="line">    Shape s1 = t.getShape(<span class="string">"Rectangle"</span>);</div><div class="line">    Shape s2 = t.getShape(<span class="string">"Circle"</span>);</div><div class="line">    s1.draw();</div><div class="line">    s2.draw();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>The following might not good.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// FoodFactory.java</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Food</span></span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">serve</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"I'm serving "</span>+<span class="keyword">this</span>.getClass().getName());</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> <span class="keyword">extends</span> <span class="title">Food</span></span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Meat</span> <span class="keyword">extends</span> <span class="title">Food</span></span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FoodFactory</span></span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> Food <span class="title">getFood</span><span class="params">(String f)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(f.equals(<span class="string">"Fruit"</span>))&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Fruit();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(f.equals(<span class="string">"Meat"</span>))&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Meat();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No food found with name "</span> + f);</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    Test t = <span class="keyword">new</span> FoodFactory();</div><div class="line">    Food f1 = t.getFood(<span class="string">"Fruit"</span>); </div><div class="line">    Food f2 = t.getFood(<span class="string">"Meat"</span>);  </div><div class="line">    f1.serve();                   <span class="comment">// I'm serving Fruit</span></div><div class="line">    f2.serve();                   <span class="comment">// I'm serving Meat</span></div><div class="line">    System.out.println(f1.getClass().getSuperclass().getName()); <span class="comment">// Food</span></div><div class="line">    System.out.println(f1.getClass().getName()); <span class="comment">// Fruit</span></div><div class="line">    System.out.println(f2.getClass().getName()); <span class="comment">// Meat</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-inheritance-for-several-languages" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/21/inheritance-for-several-languages/">inheritance for several languages</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/10/21/inheritance-for-several-languages/" class="article-date">
-  <time datetime="2016-10-21T13:56:45.000Z" itemprop="datePublished">2016-10-21</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Python 2<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span>    </div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    print(<span class="string">"A()"</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    print(<span class="string">"B()"</span>)</div><div class="line">    super(B,self).__init__()</div><div class="line"></div><div class="line">a = A() <span class="comment"># A()</span></div><div class="line">b = B() <span class="comment"># B() \n A()</span></div><div class="line"><span class="comment"># Note in class A, 'object' in A(object) cannot be omitted, otherwise error raised</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></div><div class="line">    self.name = name</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">(self)</span>:</span></div><div class="line">    print(<span class="string">"Hello, %s!"</span>%(self.name))</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(Person)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></div><div class="line">    super(Student,self).__init__(name)</div><div class="line">    self.age = age</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">(self)</span>:</span></div><div class="line">    super(Student, self).say_hello()</div><div class="line">    print(<span class="string">"I'm %d years old!"</span>%(self.age))</div><div class="line"></div><div class="line">p1 = Person(<span class="string">"John"</span>)</div><div class="line">p2 = Student(<span class="string">"Joe"</span>, <span class="number">10</span>)</div><div class="line">p1.say_hello() <span class="comment"># Hello, John!</span></div><div class="line">p2.say_hello() <span class="comment"># Hello, Joe!  \n I'm 10 years old!</span></div></pre></td></tr></table></figure></p>
-<p>Python 3<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    print(<span class="string">"A()"</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(A)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">    print(<span class="string">"B()"</span>)</div><div class="line">    super().__init__()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">()</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></div><div class="line">    self.name = name</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">(self)</span>:</span></div><div class="line">    print(<span class="string">"Hello, &#123;&#125;!"</span>.format(self.name))</div><div class="line">    <span class="comment"># or print("Hello, %s!"%(self.name))</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(Person)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></div><div class="line">    super().__init__(name)</div><div class="line">    self.age = age</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">(self)</span>:</span></div><div class="line">    super().say_hello()</div><div class="line">    print(<span class="string">"I'm &#123;&#125; years old!"</span>.format(self.age))</div><div class="line"></div><div class="line">a = A() <span class="comment"># A()</span></div><div class="line">b = B() <span class="comment"># B() \n A()</span></div><div class="line">p1 = Person(<span class="string">"John"</span>)</div><div class="line">p2 = Student(<span class="string">"Joe"</span>, <span class="number">10</span>)</div><div class="line">p1.say_hello() <span class="comment"># Hello, John!</span></div><div class="line">p2.say_hello() <span class="comment"># Hello, Joe!  \n I'm 10 years old!</span></div></pre></td></tr></table></figure></p>
-<p>JavaScript ES6 <a href="http://es6.ruanyifeng.com/#docs/class#Class的继承" target="_blank" rel="external">reference</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name)&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line">  sayHello()&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`Hello, <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>!`</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, age)&#123;</div><div class="line">    <span class="keyword">super</span>(name);</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">  &#125;</div><div class="line">  sayHello()&#123;</div><div class="line">    <span class="keyword">super</span>.sayHello();</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`I'm <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span> years old.`</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">'James'</span>);</div><div class="line">p.sayHello();</div><div class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> Student(<span class="string">'John'</span>, <span class="number">10</span>);</div><div class="line">s.sayHello();</div></pre></td></tr></table></figure></p>
-<p>JavaScript ES5 <a href="http://keenwon.com/1524.html" target="_blank" rel="external">reference</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">Person = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line">Person.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`Hello, <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>!`</span>);</div><div class="line">&#125;</div><div class="line">Student = <span class="function"><span class="keyword">function</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">  Person.call(<span class="keyword">this</span>,name);</div><div class="line">  <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"><span class="comment">// two ways:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">DougWayInherit</span>(<span class="params">Child, Parent</span>)</span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">  F.prototype = Parent.prototype;</div><div class="line">  Child.prototype = <span class="keyword">new</span> F();</div><div class="line">  Child.prototype.constructor = Child;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SimplerButNotSure</span>(<span class="params">Child, Parent</span>)</span>&#123;</div><div class="line">  Child.prototype = <span class="keyword">new</span> Parent();</div><div class="line">  Child.prototype.constructor = Child;</div><div class="line">&#125;</div><div class="line">DougWayInherit(Student, Person);</div><div class="line"><span class="comment">// SimplerButNotSure(Student, Person);</span></div><div class="line">Student.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  Person.prototype.sayHello.call(<span class="keyword">this</span>);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`I'm <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span> years old!`</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">'James'</span>);</div><div class="line">p.sayHello()</div><div class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> Student(<span class="string">'John'</span>, <span class="number">10</span>);</div><div class="line">s.sayHello()</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(s.__proto__ == Student.prototype);</div><div class="line"><span class="built_in">console</span>.log(Student.prototype.constructor === Student); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(s.constructor === Student); <span class="comment">//  true</span></div><div class="line"><span class="built_in">console</span>.log(s.__proto__ === Student.prototype); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(Student.prototype.__proto__ == Person.prototype); <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
-<p>Java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> String name;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span></span>&#123;</div><div class="line">     <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"Hello, "</span>+<span class="keyword">this</span>.name+<span class="string">"!"</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">  <span class="function">pubic <span class="title">Student</span><span class="params">(String name, <span class="keyword">int</span> age)</span></span>&#123;</div><div class="line">      <span class="keyword">super</span>(name);</div><div class="line">      <span class="keyword">this</span>.age = age;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayMore</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"I'm "</span>+<span class="keyword">this</span>.age+<span class="string">" years old."</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">    Person p = <span class="keyword">new</span> Person(<span class="string">"Elsa"</span>);</div><div class="line">    Student s = <span class="keyword">new</span> Student(<span class="string">"Anna"</span>,<span class="number">10</span>);</div><div class="line">    p.say(); <span class="comment">// Hello, Elsa!</span></div><div class="line">    s.say(); <span class="comment">// Hello, Anna!</span></div><div class="line">    s.sayMore(); <span class="comment">// I'm 10 years old.</span></div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/inheritance/">inheritance</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-io-for-several-languages" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/20/io-for-several-languages/">io for several languages</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/10/20/io-for-several-languages/" class="article-date">
-  <time datetime="2016-10-20T16:06:02.000Z" itemprop="datePublished">2016-10-20</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/io/">io</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-valid-ip" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/20/valid-ip/">valid ip</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/10/20/valid-ip/" class="article-date">
-  <time datetime="2016-10-20T14:57:56.000Z" itemprop="datePublished">2016-10-20</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&apos;&apos;&apos;</div><div class="line">An IP address is a String in the form &quot;A.B.C.D&quot;, where the</div><div class="line">values of A, B, C, D range from 0 to 255. Leading zeros are</div><div class="line">allowed, but the length cannot be larger then 3.</div><div class="line">Valid:</div><div class="line">000.12.12.034</div><div class="line">121.234.21.12</div><div class="line">23.45.12.56</div><div class="line"></div><div class="line">Invalid:</div><div class="line">000.12.34.56.78</div><div class="line">666.666.12.34</div><div class="line">.12.34.56.78</div><div class="line">12.23.34.56.</div><div class="line">I.am.not.</div><div class="line">&apos;&apos;&apos;</div></pre></td></tr></table></figure>
-<p>Python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">isOK</span><span class="params">(s)</span>:</span></div><div class="line">    u = <span class="string">r"^(\d&#123;1,3&#125;)\.(\d&#123;1,3&#125;)\.(\d&#123;1,3&#125;)\.(\d&#123;1,3&#125;)$"</span></div><div class="line">    m = re.match(u,s)</div><div class="line">    <span class="keyword">if</span> m:</div><div class="line">        m = list(m.groups())</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> m:</div><div class="line">            <span class="keyword">if</span> int(i)&gt;<span class="number">255</span>:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    goods = [<span class="string">'000.12.12.034'</span>,<span class="string">'121.234.21.12'</span>,<span class="string">'23.45.12.56'</span>]</div><div class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> goods:</div><div class="line">        print(isOK(s))</div><div class="line"></div><div class="line">    bads = [<span class="string">'000.12.34.56.78'</span>,<span class="string">'666.666.12.34'</span>,<span class="string">'.12.34.56.78'</span>,</div><div class="line">            <span class="string">'12.23.34.56.'</span>,<span class="string">'I.am.not.'</span>]</div><div class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> bads:</div><div class="line">        print(isOK(s))</div><div class="line"></div><div class="line">main()</div></pre></td></tr></table></figure></p>
-<p>JS<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValid</span>(<span class="params">s</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> pattern = <span class="regexp">/^(\d&#123;1,3&#125;)\.(\d&#123;1,3&#125;)\.(\d&#123;1,3&#125;)\.(\d&#123;1,3&#125;)$/</span>;</div><div class="line">  <span class="keyword">var</span> r = pattern.exec(s);</div><div class="line">  <span class="keyword">if</span>(r)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">4</span>; ++i)&#123;</div><div class="line">      <span class="keyword">if</span>(<span class="built_in">parseInt</span>(r[i])&gt;<span class="number">255</span>)</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> goods = [<span class="string">'000.12.12.034'</span>,<span class="string">'121.234.21.12'</span>,<span class="string">'23.45.12.56'</span>],</div><div class="line">  bads  = [<span class="string">'000.12.34.56.78'</span>,<span class="string">'666.666.12.34'</span>,<span class="string">'.12.34.56.78'</span>,</div><div class="line">            <span class="string">'12.23.34.56.'</span>,<span class="string">'I.am.not.'</span>];</div><div class="line"></div><div class="line">goods.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(isValid(item))&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'match!'</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'not match!'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line">bads.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(isValid(item))&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'match!'</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'not match!'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>Java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.regex.Matcher;</div><div class="line"><span class="keyword">import</span> java.util.regex.Pattern;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    String pattern = <span class="string">"^(\\d&#123;1,3&#125;)\\.(\\d&#123;1,3&#125;)\\.(\\d&#123;1,3&#125;)\\.(\\d&#123;1,3&#125;)$"</span>;</div><div class="line">    Pattern r = Pattern.compile(pattern);</div><div class="line">    String[] goods = &#123;<span class="string">"000.12.12.034"</span>,<span class="string">"121.234.21.12"</span>,<span class="string">"23.45.12.56"</span>&#125;;</div><div class="line">    String[] bads = &#123;<span class="string">"000.12.34.56.78"</span>,<span class="string">"666.666.12.34"</span>,<span class="string">".12.34.56.78"</span>,<span class="string">"12.23.34.56."</span>,<span class="string">"I.am.not."</span>&#125;;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;goods.length; ++i)&#123;</div><div class="line">      String s = goods[i];</div><div class="line">      Matcher m = r.matcher(s);</div><div class="line">      <span class="keyword">if</span>(m.find())&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=<span class="number">4</span>; ++j)&#123;</div><div class="line">          <span class="comment">// String ss = m.group(j).replaceFirst("^0+(?!$)","");</span></div><div class="line">          String ss = m.group(j);</div><div class="line">          <span class="keyword">if</span>(Integer.parseInt(ss)&gt;<span class="number">255</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/regex/">regex</a></li></ul>
 
       </footer>
     

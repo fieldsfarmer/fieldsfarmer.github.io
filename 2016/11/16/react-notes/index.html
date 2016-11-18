@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>react notes - my westworld</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="There are two types of data in a component:
+
+props: get passed into a component as initialized; for exampleReactDom.render(&amp;lt;MyList name=&amp;quot;Kevin&amp;quot;/&amp;gt;, document.getElementById(&amp;#39;app&amp;#39;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react notes">
+<meta property="og:url" content="https://fieldsfarmer.github.io/2016/11/16/react-notes/index.html">
+<meta property="og:site_name" content="my westworld">
+<meta property="og:description" content="There are two types of data in a component:
+
+props: get passed into a component as initialized; for exampleReactDom.render(&amp;lt;MyList name=&amp;quot;Kevin&amp;quot;/&amp;gt;, document.getElementById(&amp;#39;app&amp;#39;">
+<meta property="og:updated_time" content="2016-11-17T20:36:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react notes">
+<meta name="twitter:description" content="There are two types of data in a component:
+
+props: get passed into a component as initialized; for exampleReactDom.render(&amp;lt;MyList name=&amp;quot;Kevin&amp;quot;/&amp;gt;, document.getElementById(&amp;#39;app&amp;#39;">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/atom.xml">Rss</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fieldsfarmer.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-react-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react notes
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/11/16/react-notes/" class="article-date">
+  <time datetime="2016-11-17T00:58:04.000Z" itemprop="datePublished">2016-11-16</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>There are two types of data in a component:</p>
+<ul>
+<li>props: get passed into a component as initialized; for example<br><code>ReactDom.render(&lt;MyList name=&quot;Kevin&quot;/&gt;, document.getElementById(&#39;app&#39;))</code><br>A component cannot update the props, all you can do is set the default value in <code>getDefaultProps</code> function in the component.</li>
+<li>state: internally maintained and updated by the component.</li>
+</ul>
+<hr>
+<p>Two ways of constructing a component</p>
+<ol>
+<li>using <code>var myComponent = React.createClass({ ... })</code> <a href="http://codepen.io/fieldsfarmer/pen/dOpxKe" target="_blank" rel="external">example</a></li>
+<li>using <code>class MyCompoent extends React.Component{ ... }</code> <a href="http://codepen.io/fieldsfarmer/pen/GNjVYz" target="_blank" rel="external">example</a><br>Note: No Autobinding  Methods follow the same semantics as regular ES6 classes, meaning that they don’t automatically bind this to the instance. You’ll have to explicitly use .bind(this) or arrow functions. See <a href="http://es6.ruanyifeng.com/#docs/class" target="_blank" rel="external">here</a>.</li>
+<li>Rewrite the above first example using nested component in <a href="http://codepen.io/fieldsfarmer/pen/zooPXx" target="_blank" rel="external">here</a>.</li>
+<li>Rewrite the second using nested component in <a href="http://codepen.io/fieldsfarmer/pen/BQQYWy" target="_blank" rel="external">here</a>.</li>
+<li>A more complex <a href="http://codepen.io/fieldsfarmer/pen/dOOmGy" target="_blank" rel="external">example</a>.</li>
+</ol>
+<hr>
+<p>Two types of component</p>
+<ul>
+<li>presentational component: render something to the browser</li>
+<li>container component: maintain state and render children</li>
+</ul>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-js/">react.js</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/17/npm-install-commands/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+        
+          npm install commands
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/14/js-training-notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js training notes&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 fieldsfarmer&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
