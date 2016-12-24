@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>linux commands - my westworld</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="The first lines of a file123head -2 filenameawk &amp;apos;FNR&amp;lt;=2&amp;apos; filenameawk &amp;apos;NR&amp;lt;=2 &amp;#123;print&amp;#125;&amp;apos; filename
+The nth (starting from 1) line of a file12awk &amp;apos;FNR=2&amp;apos; filena">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux commands">
+<meta property="og:url" content="https://fieldsfarmer.github.io/2016/12/15/linux-commands/index.html">
+<meta property="og:site_name" content="my westworld">
+<meta property="og:description" content="The first lines of a file123head -2 filenameawk &amp;apos;FNR&amp;lt;=2&amp;apos; filenameawk &amp;apos;NR&amp;lt;=2 &amp;#123;print&amp;#125;&amp;apos; filename
+The nth (starting from 1) line of a file12awk &amp;apos;FNR=2&amp;apos; filena">
+<meta property="og:updated_time" content="2016-12-20T17:05:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux commands">
+<meta name="twitter:description" content="The first lines of a file123head -2 filenameawk &amp;apos;FNR&amp;lt;=2&amp;apos; filenameawk &amp;apos;NR&amp;lt;=2 &amp;#123;print&amp;#125;&amp;apos; filename
+The nth (starting from 1) line of a file12awk &amp;apos;FNR=2&amp;apos; filena">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/atom.xml">Rss</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fieldsfarmer.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-linux-commands" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      linux commands
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/12/15/linux-commands/" class="article-date">
+  <time datetime="2016-12-15T12:40:43.000Z" itemprop="datePublished">2016-12-15</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The first lines of a file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">head -2 filename</div><div class="line">awk &apos;FNR&lt;=2&apos; filename</div><div class="line">awk &apos;NR&lt;=2 &#123;print&#125;&apos; filename</div></pre></td></tr></table></figure></p>
+<p>The nth (starting from 1) line of a file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">awk &apos;FNR=2&apos; filename</div><div class="line">awk &apos;NR=2 &#123;print&#125;&apos; filename</div></pre></td></tr></table></figure></p>
+<p>The last lines of a file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail -2 filename</div></pre></td></tr></table></figure></p>
+<hr>
+<p>Given a file which each line is like: <code>person_name: say something</code>.<br>Find all <code>person_name</code> who mentioned ‘Kevin’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grep &apos;Kevin&apos; filename | sed &apos;s/\([^:].*\):.*&apos;/\1/g&apos; | uniq | sort</div><div class="line">sed -n &apos;/Kevin/p&apos; t.txt | sed &apos;s/\([^:].*\):.*/\1/g&apos; | uniq | sort</div></pre></td></tr></table></figure></p>
+<hr>
+<p>Get rid of all <code>&lt;&gt;</code> tags in a html file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed &apos;s/&lt;[^&gt;]*&gt;//g&apos; filename</div></pre></td></tr></table></figure></p>
+<hr>
+<p>Find valid phone numbers from a file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;/^([0-9]&#123;3&#125;-|\([0-9]&#123;3&#125;\) )[0-9]&#123;3&#125;-[0-9]&#123;4&#125;$/&apos; file.txt</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/17/c-11-thread-notes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+        
+          c++11 thread notes
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/17/npm-install-commands/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">npm install commands&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 fieldsfarmer&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

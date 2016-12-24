@@ -53,6 +53,243 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-rate-checker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/04/rate-checker/">rate checker</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/11/04/rate-checker/" class="article-date">
+  <time datetime="2016-11-04T21:36:07.000Z" itemprop="datePublished">2016-11-04</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> collections</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RateChecker</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,q,n)</span>:</span></div><div class="line">    self.dq = collections.deque()</div><div class="line">    self.q = q</div><div class="line">    self.n = n</div><div class="line">    </div><div class="line"><span class="comment"># if in q seconds, has more than n requests, then true;</span></div><div class="line"><span class="comment"># otherwise, false</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(self)</span>:</span></div><div class="line">    t = time.time()</div><div class="line">    self.dq.append(t)</div><div class="line">    <span class="keyword">if</span> len(self.dq) &lt; self.n:</div><div class="line">      <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    last = self.dq.popleft()</div><div class="line">    <span class="keyword">return</span> t-last &lt; self.q</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">  rc = RateChecker(<span class="number">1</span>,<span class="number">3</span>)</div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">    <span class="keyword">print</span> rc.check()</div><div class="line">    time.sleep(<span class="number">0.1</span>)</div><div class="line">  time.sleep(<span class="number">1.7</span>)</div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">    <span class="keyword">print</span> rc.check()</div><div class="line">    time.sleep(<span class="number">0.1</span>)</div><div class="line"></div><div class="line"><span class="comment">#False False True False False True True</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">  main()</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-implement-getElementsByClassName" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/03/implement-getElementsByClassName/">implement getElementsByClassName</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/11/03/implement-getElementsByClassName/" class="article-date">
+  <time datetime="2016-11-03T20:51:54.000Z" itemprop="datePublished">2016-11-03</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myImplementation</span>(<span class="params">className</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> docBody = <span class="built_in">document</span>.body;</div><div class="line">  <span class="keyword">var</span> res = [];</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">walk</span>(<span class="params">node, func</span>)</span>&#123;</div><div class="line">    func(node);</div><div class="line">    node = node.firstChild;</div><div class="line">    <span class="keyword">while</span>(node)&#123;</div><div class="line">      walk(node, func);</div><div class="line">      node = node.nextSibling;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  walk(docBody, <span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(node.classList &amp;&amp; node.classList.contains(className))&#123;</div><div class="line">      res.push(node);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://stackoverflow.com/questions/33264842/implementing-getelementsbyclassname-recursively" target="_blank" rel="external">ref</a></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-reservoir-sample" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/31/reservoir-sample/">reservoir sample</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/10/31/reservoir-sample/" class="article-date">
+  <time datetime="2016-11-01T00:54:22.000Z" itemprop="datePublished">2016-10-31</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://en.wikipedia.org/wiki/Reservoir_sampling" target="_blank" rel="external">Algorithm R</a><br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">reservoir_sample</span><span class="params">(arr, k)</span>:</span></div><div class="line">  res = []</div><div class="line">  t = []</div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</div><div class="line">    t.append(arr[i]);</div><div class="line">  res.append(t)</div><div class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> range(k,len(arr)):</div><div class="line">    t = list(t)</div><div class="line">    i = random.randint(<span class="number">0</span>,j)</div><div class="line">    <span class="keyword">if</span> i&lt;k:</div><div class="line">      t[i]=arr[j]</div><div class="line">    res.append(t)</div><div class="line">  <span class="keyword">return</span> res</div><div class="line">arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>]</div><div class="line">print(reservoir_sample(arr, <span class="number">2</span>))</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-flatten-array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/31/flatten-array/">flatten array</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/10/31/flatten-array/" class="article-date">
+  <time datetime="2016-10-31T23:06:44.000Z" itemprop="datePublished">2016-10-31</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//recursive ways</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> res = [];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;arr.length; ++i)&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(arr[i]))&#123;</div><div class="line">      res = res.concat(f1(arr[i]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      res.push(arr[i])</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="comment">//ES6</span></div><div class="line"><span class="keyword">const</span> f2 = <span class="function">(<span class="params">arr</span>)=&gt;</span>arr.reduce(a,b)=&gt;a.concat(<span class="built_in">Array</span>.isArray(b)?f2(b):b, []);</div><div class="line"></div><div class="line"><span class="comment">//iterative way</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> list = arr.slice(),</div><div class="line">    res = [];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> node = list.shift(); node !== <span class="literal">undefined</span>; node = list.shift())&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(node))&#123;</div><div class="line">      [].unshift.apply(list, node);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      res.push(node);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">var</span> arr = [[[<span class="number">1</span>],<span class="string">'a'</span>],[&#123;<span class="string">'b'</span>:<span class="number">1</span>&#125;,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>],[<span class="number">5</span>,[<span class="number">6</span>,[<span class="number">7</span>]]]];</div><div class="line">f1(arr); <span class="comment">//[ 1, 'a', &#123; b: 1 &#125;, 2, 3, 4, 5, 6, 7 ]</span></div></pre></td></tr></table></figure>
+<p><a href="http://stackoverflow.com/questions/27266550/how-to-flatten-nested-array-in-javascript" target="_blank" rel="external">ref</a></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-js-async-forEach" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/25/js-async-forEach/">js async forEach</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/10/25/js-async-forEach/" class="article-date">
+  <time datetime="2016-10-26T03:22:16.000Z" itemprop="datePublished">2016-10-25</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'underscore'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncForEach</span>(<span class="params">arr,iterator,callback</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> callOnce = _.once(callback), remaining = arr.length;</div><div class="line">  arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    iterator(item, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">      remaining -= <span class="number">1</span>;</div><div class="line">      <span class="keyword">if</span>(err || remaining === <span class="number">0</span>)&#123;</div><div class="line">        callOnce(err);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncForEach</span>(<span class="params">arr,iterator,callback</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> callOnce = _.once(callback), remaining = arr.length;</div><div class="line">  arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    iterator(item, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">      remaining -= <span class="number">1</span>;</div><div class="line">      <span class="keyword">if</span>(err)&#123;</div><div class="line">        remaining = <span class="number">0</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span>(remaining === <span class="number">0</span>)&#123;</div><div class="line">        callOnce(err);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">asyncForEach([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],<span class="function"><span class="keyword">function</span>(<span class="params">item, callback</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">  callback(<span class="literal">null</span>);</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'done'</span>)</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// 3</span></div><div class="line"><span class="comment">// done</span></div></pre></td></tr></table></figure>
+<p>An interesting fact;<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;list.length; ++i)&#123;</div><div class="line">    <span class="keyword">if</span>(list[i]==<span class="number">1</span>)&#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(list[i]);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">printExcept1</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(item == <span class="number">1</span>)&#123;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(item);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> list = [<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;list.length; ++i)&#123;</div><div class="line">    printExcept1(list[i]);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> list = [<span class="number">1</span>,<span class="number">6</span>,<span class="number">7</span>];</div><div class="line">  list.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(item == <span class="number">1</span>)&#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(item);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line">f1(); <span class="comment">// nothing</span></div><div class="line">f2(); <span class="comment">// 4 5</span></div><div class="line">f3(); <span class="comment">// 6 7</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myForEach</span>(<span class="params">list,callback</span>)</span>&#123;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;list.length; ++i)&#123;</div><div class="line">    callback.call(list,i);</div><div class="line">    <span class="comment">//callback.call(list[i],i);</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> list = [<span class="number">1</span>,<span class="number">8</span>,<span class="number">9</span>];</div><div class="line">myForEach(list, <span class="function"><span class="keyword">function</span>(<span class="params">idex</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(list[idex] == <span class="number">1</span>)&#123;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(list[idex]);</div><div class="line">  &#125;</div><div class="line">&#125;)  <span class="comment">// 8 9</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-CSS-notes" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -315,108 +552,8 @@
 
 
     
-      <article id="post-string-split-and-sort" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/20/string-split-and-sort/">python vs js</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/10/20/string-split-and-sort/" class="article-date">
-  <time datetime="2016-10-20T14:17:14.000Z" itemprop="datePublished">2016-10-20</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JavaScript (Node.js v6.7.0)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'abc'</span>;</div><div class="line">s.split();   <span class="comment">// [ 'abc' ]</span></div><div class="line">s.split(<span class="string">''</span>); <span class="comment">// [ 'a', 'b', 'c' ]</span></div><div class="line"></div><div class="line"><span class="string">'hello world'</span>.split();     <span class="comment">// [ 'hello world' ]</span></div><div class="line"><span class="string">'hello world'</span>.split(<span class="string">' '</span>);  <span class="comment">// [ 'hello', 'world' ]</span></div><div class="line"></div><div class="line"><span class="string">''</span>.split();     <span class="comment">// [ '' ]</span></div><div class="line"><span class="string">''</span>.split(<span class="string">' '</span>);  <span class="comment">// [ '' ]</span></div></pre></td></tr></table></figure></p>
-<p>Python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'abc'</span></div><div class="line">s.split()    <span class="comment"># ['abc']</span></div><div class="line">s.split(<span class="string">''</span>)  <span class="comment"># error! empty separator</span></div><div class="line">list(s)      <span class="comment"># ['a', 'b', 'c']</span></div><div class="line"></div><div class="line"><span class="string">'hello world'</span>.split()     <span class="comment"># ['hello', 'world']</span></div><div class="line"><span class="string">'hello world'</span>.split(<span class="string">' '</span>)  <span class="comment"># ['hello', 'world']</span></div><div class="line"></div><div class="line"><span class="string">''</span>.split()     <span class="comment"># []</span></div><div class="line"><span class="string">''</span>.split(<span class="string">' '</span>)  <span class="comment"># ['']</span></div></pre></td></tr></table></figure></p>
-<p>Python<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">''</span>.join(sorted(<span class="string">'bca'</span>)) <span class="comment">#'abc'</span></div><div class="line"><span class="string">''</span>.join(sorted(list(<span class="string">'bca'</span>)))</div></pre></td></tr></table></figure></p>
-<p>JavaScript<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">'bca'</span>.split(<span class="string">''</span>).sort().join(<span class="string">''</span>) <span class="comment">// 'abc'</span></div></pre></td></tr></table></figure></p>
-<p>Java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span>[] chars = s.toCharArray();</div><div class="line">Arrays.sort(chars);</div><div class="line">String sortedString = <span class="keyword">new</span> String(chars);</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/20/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/10/20/hello-world/" class="article-date">
-  <time datetime="2016-10-20T13:41:09.000Z" itemprop="datePublished">2016-10-20</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
       <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
       </nav>
     </section>
     <footer id="footer">

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>c++ template example - my westworld</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include&amp;lt;iostream&amp;gt;#include&amp;lt;string&amp;gt;using namespace std;template&amp;lt;typename T&amp;gt;s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++ template example">
+<meta property="og:url" content="https://fieldsfarmer.github.io/2016/12/23/c-template-example/index.html">
+<meta property="og:site_name" content="my westworld">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include&amp;lt;iostream&amp;gt;#include&amp;lt;string&amp;gt;using namespace std;template&amp;lt;typename T&amp;gt;s">
+<meta property="og:updated_time" content="2016-12-24T00:50:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c++ template example">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include&amp;lt;iostream&amp;gt;#include&amp;lt;string&amp;gt;using namespace std;template&amp;lt;typename T&amp;gt;s">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/atom.xml">Rss</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fieldsfarmer.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-c-template-example" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      c++ template example
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/12/23/c-template-example/" class="article-date">
+  <time datetime="2016-12-24T00:21:22.000Z" itemprop="datePublished">2016-12-23</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">struct</span> node&#123;</div><div class="line">  T val;</div><div class="line">  node* next;</div><div class="line">  node(T v):val(v),next(<span class="literal">NULL</span>)&#123;&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_list</span><span class="params">(node&lt;T&gt;* head)</span></span>&#123;</div><div class="line">  <span class="keyword">while</span>(head)&#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; head-&gt;val &lt;&lt; <span class="string">" "</span>;</div><div class="line">    head = head-&gt;next;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div><div class="line">node&lt;T&gt;* reverse(node&lt;T&gt;* head)&#123;</div><div class="line">  <span class="keyword">if</span>(!head || !(head-&gt;next)) <span class="keyword">return</span> head;</div><div class="line">  <span class="keyword">auto</span> tail = head-&gt;next;</div><div class="line">  head-&gt;next = <span class="literal">NULL</span>;</div><div class="line">  <span class="keyword">auto</span> new_head = reverse(tail);</div><div class="line">  tail-&gt;next = head;</div><div class="line">  <span class="keyword">return</span> new_head;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// template&lt;typename T&gt;</span></div><div class="line"><span class="comment">// node&lt;T&gt;* reverse(node&lt;T&gt;* head)&#123;</span></div><div class="line"><span class="comment">//   node&lt;T&gt;* new_head = NULL;</span></div><div class="line"><span class="comment">//   node&lt;T&gt;* next = NULL;</span></div><div class="line"><span class="comment">//   while(head)&#123;</span></div><div class="line"><span class="comment">//     next = head-&gt;next;</span></div><div class="line"><span class="comment">//     head-&gt;next = new_head;</span></div><div class="line"><span class="comment">//     new_head = head;</span></div><div class="line"><span class="comment">//     head = next;</span></div><div class="line"><span class="comment">//   &#125;</span></div><div class="line"><span class="comment">//   return new_head;</span></div><div class="line"><span class="comment">// &#125;</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">auto</span> h1 = <span class="keyword">new</span> node&lt;<span class="built_in">string</span>&gt;(<span class="string">"A"</span>);</div><div class="line">  h1-&gt;next = <span class="keyword">new</span> node&lt;<span class="built_in">string</span>&gt;(<span class="string">"B"</span>);</div><div class="line">  h1-&gt;next-&gt;next = <span class="keyword">new</span> node&lt;<span class="built_in">string</span>&gt;(<span class="string">"C"</span>);</div><div class="line">  print_list&lt;<span class="built_in">string</span>&gt;(h1);</div><div class="line">  <span class="keyword">auto</span> new_head = reverse&lt;<span class="built_in">string</span>&gt;(h1);</div><div class="line">  print_list(new_head);</div><div class="line">  <span class="keyword">auto</span> h2 = <span class="keyword">new</span> node&lt;<span class="keyword">int</span>&gt;(<span class="number">1</span>);</div><div class="line">  h2-&gt;next = <span class="keyword">new</span> node&lt;<span class="keyword">int</span>&gt;(<span class="number">2</span>);</div><div class="line">  h2-&gt;next-&gt;next = <span class="keyword">new</span> node&lt;<span class="keyword">int</span>&gt;(<span class="number">3</span>);</div><div class="line">  print_list&lt;<span class="keyword">int</span>&gt;(h2);</div><div class="line">  <span class="keyword">auto</span> new_head2 = reverse&lt;<span class="keyword">int</span>&gt;(h2);</div><div class="line">  print_list&lt;<span class="keyword">int</span>&gt;(new_head2);</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/20/OS-and-Network-questions/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">os and communication network questions&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 fieldsfarmer&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

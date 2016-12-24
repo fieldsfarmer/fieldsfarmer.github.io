@@ -53,6 +53,281 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-c-template-example" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/23/c-template-example/">c++ template example</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/12/23/c-template-example/" class="article-date">
+  <time datetime="2016-12-24T00:21:22.000Z" itemprop="datePublished">2016-12-23</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">struct</span> node&#123;</div><div class="line">  T val;</div><div class="line">  node* next;</div><div class="line">  node(T v):val(v),next(<span class="literal">NULL</span>)&#123;&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_list</span><span class="params">(node&lt;T&gt;* head)</span></span>&#123;</div><div class="line">  <span class="keyword">while</span>(head)&#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; head-&gt;val &lt;&lt; <span class="string">" "</span>;</div><div class="line">    head = head-&gt;next;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div><div class="line">node&lt;T&gt;* reverse(node&lt;T&gt;* head)&#123;</div><div class="line">  <span class="keyword">if</span>(!head || !(head-&gt;next)) <span class="keyword">return</span> head;</div><div class="line">  <span class="keyword">auto</span> tail = head-&gt;next;</div><div class="line">  head-&gt;next = <span class="literal">NULL</span>;</div><div class="line">  <span class="keyword">auto</span> new_head = reverse(tail);</div><div class="line">  tail-&gt;next = head;</div><div class="line">  <span class="keyword">return</span> new_head;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// template&lt;typename T&gt;</span></div><div class="line"><span class="comment">// node&lt;T&gt;* reverse(node&lt;T&gt;* head)&#123;</span></div><div class="line"><span class="comment">//   node&lt;T&gt;* new_head = NULL;</span></div><div class="line"><span class="comment">//   node&lt;T&gt;* next = NULL;</span></div><div class="line"><span class="comment">//   while(head)&#123;</span></div><div class="line"><span class="comment">//     next = head-&gt;next;</span></div><div class="line"><span class="comment">//     head-&gt;next = new_head;</span></div><div class="line"><span class="comment">//     new_head = head;</span></div><div class="line"><span class="comment">//     head = next;</span></div><div class="line"><span class="comment">//   &#125;</span></div><div class="line"><span class="comment">//   return new_head;</span></div><div class="line"><span class="comment">// &#125;</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">auto</span> h1 = <span class="keyword">new</span> node&lt;<span class="built_in">string</span>&gt;(<span class="string">"A"</span>);</div><div class="line">  h1-&gt;next = <span class="keyword">new</span> node&lt;<span class="built_in">string</span>&gt;(<span class="string">"B"</span>);</div><div class="line">  h1-&gt;next-&gt;next = <span class="keyword">new</span> node&lt;<span class="built_in">string</span>&gt;(<span class="string">"C"</span>);</div><div class="line">  print_list&lt;<span class="built_in">string</span>&gt;(h1);</div><div class="line">  <span class="keyword">auto</span> new_head = reverse&lt;<span class="built_in">string</span>&gt;(h1);</div><div class="line">  print_list(new_head);</div><div class="line">  <span class="keyword">auto</span> h2 = <span class="keyword">new</span> node&lt;<span class="keyword">int</span>&gt;(<span class="number">1</span>);</div><div class="line">  h2-&gt;next = <span class="keyword">new</span> node&lt;<span class="keyword">int</span>&gt;(<span class="number">2</span>);</div><div class="line">  h2-&gt;next-&gt;next = <span class="keyword">new</span> node&lt;<span class="keyword">int</span>&gt;(<span class="number">3</span>);</div><div class="line">  print_list&lt;<span class="keyword">int</span>&gt;(h2);</div><div class="line">  <span class="keyword">auto</span> new_head2 = reverse&lt;<span class="keyword">int</span>&gt;(h2);</div><div class="line">  print_list&lt;<span class="keyword">int</span>&gt;(new_head2);</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-OS-and-Network-questions" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/OS-and-Network-questions/">os and communication network questions</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/12/20/OS-and-Network-questions/" class="article-date">
+  <time datetime="2016-12-20T16:05:36.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="communication-layers-ref"><a href="#communication-layers-ref" class="headerlink" title="communication layers (ref)"></a>communication layers <a href="http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html" target="_blank" rel="external">(ref)</a></h5><ul>
+<li>application</li>
+<li>transport (UDP, TCP)</li>
+<li>network  (IP, ARP)</li>
+<li>link     </li>
+<li>physical </li>
+</ul>
+<hr>
+<h5 id="deadlock"><a href="#deadlock" class="headerlink" title="deadlock:"></a>deadlock:</h5><p>In an operating system, it occurs when a process or thread enters a waiting state because a requested system resource is held by another waiting process, which in turn is waiting for another resource held by another waiting process.</p>
+<ul>
+<li>mutual exclusion</li>
+<li>hold and wait</li>
+<li>no preemption</li>
+<li>circular wait</li>
+</ul>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/communication-networks/">communication networks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/operating-systems/">operating systems</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-simple-form-submit-to-update-the-table-on-the-webpage" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/19/simple-form-submit-to-update-the-table-on-the-webpage/">simple form submit to update the table on the webpage</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/12/19/simple-form-submit-to-update-the-table-on-the-webpage/" class="article-date">
+  <time datetime="2016-12-20T01:26:17.000Z" itemprop="datePublished">2016-12-19</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Write a form on a page, which also has a table. When you input the information and submit, then the information will be shown in the table. See <a href="http://codepen.io/fieldsfarmer/pen/dOaLpR" target="_blank" rel="external">here</a>.</p>
+<hr>
+<p>I found I still don’t know much/nothing about <code>HTTP ETag</code>, <code>websocket</code>, <code>window.onload</code>, <code>how does ajax work</code>, <code>polling</code>, etc.</p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-c-11-thread-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/17/c-11-thread-notes/">c++11 thread notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/12/17/c-11-thread-notes/" class="article-date">
+  <time datetime="2016-12-18T02:04:49.000Z" itemprop="datePublished">2016-12-17</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Normally you run the code by:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g++ filename -std=c++11 -pthread</div></pre></td></tr></table></figure></p>
+<hr>
+<p>function with reference parameter<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;thread&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;functional&gt;</span> <span class="comment">//ref</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="built_in">string</span> s = <span class="string">"Hello!"</span>;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Main before: "</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="function">thread <span class="title">t</span><span class="params">([](<span class="built_in">string</span>&amp; s)</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>; s = <span class="string">"Ni hao!"</span>;&#125;, ref(s));</div><div class="line">  t.join();</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Main after: "</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>A situation of deadlock:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;mutex&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;thread&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line">mutex mu1;</div><div class="line">mutex mu2;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">shared_print_1</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> v)</span></span>&#123;</div><div class="line">  lock_guard&lt;mutex&gt; g1(mu1);</div><div class="line">  lock_guard&lt;mutex&gt; g2(mu2);</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; s &lt;&lt; v &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">shared_print_2</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> v)</span></span>&#123;</div><div class="line">  lock_guard&lt;mutex&gt; g2(mu2);</div><div class="line">  lock_guard&lt;mutex&gt; g1(mu1);</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; s &lt;&lt; v &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">auto</span> i=<span class="number">0</span>; i&lt;n; ++i)&#123;</div><div class="line">    shared_print_2(<span class="string">"From thread "</span>, i);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="function">thread <span class="title">t</span><span class="params">(f, <span class="number">10</span>)</span></span>;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">auto</span> i = <span class="number">10</span>; i&gt;=<span class="number">0</span>; i--)&#123;</div><div class="line">    shared_print_1(<span class="string">"From main "</span>, i);</div><div class="line">  &#125;</div><div class="line">  t.join();</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>To prevent it, either you should make the locks in <code>shared_print_1</code> and  <code>shared_print_2</code> have the same order; or use <a href="http://en.cppreference.com/w/cpp/thread/lock" target="_blank" rel="external"><code>std::lock</code></a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">shared_print_1</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> v)</span></span>&#123;</div><div class="line">  lock(mu1, mu2);</div><div class="line">  lock_guard&lt;mutex&gt; g1(mu1, adopt_lock);</div><div class="line">  lock_guard&lt;mutex&gt; g2(mu2, adopt_lock);</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; s &lt;&lt; v &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">shared_print_2</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> v)</span></span>&#123;</div><div class="line">  lock(mu2, mu1);</div><div class="line">  lock_guard&lt;mutex&gt; g2(mu2, adopt_lock);</div><div class="line">  lock_guard&lt;mutex&gt; g1(mu1, adopt_lock);</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; s &lt;&lt; v &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Some practices in avoiding deadlock:</p>
+<ul>
+<li>prefer locking single mutex</li>
+<li>avoid locking a mutex and then call a user provided function</li>
+<li>use <code>std::lock</code> to lock more than one mutex</li>
+<li>lock the mutex in the same order</li>
+</ul>
+<hr>
+<p>An efficient way to open file using <a href="http://en.cppreference.com/w/cpp/thread/call_once" target="_blank" rel="external">call_once</a>. Note the following also uses lazy initialization as the file only needed to be open when <code>shared_print</code> is called.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> LogFile&#123;</div><div class="line">  mutex _mu; ofstream _f; once_flag _flag;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  LogFile()&#123;&#125;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">shared_print</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> v)</span></span>&#123;</div><div class="line">    call_once(_flag, [&amp;]()&#123;_f.open(<span class="string">"filename"</span>);&#125;);</div><div class="line">    lock_guard&lt;mutex&gt; locker(_mu);</div><div class="line">    _f &lt;&lt; s &lt;&lt; v &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>conditional variable</strong>: to synchronize the execution of threads<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;condition_variable&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;mutex&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;deque&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;thread&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line">mutex mu;</div><div class="line">condition_variable cv;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">producer</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> count = <span class="number">10</span>;</div><div class="line">  <span class="keyword">while</span>(count &gt; <span class="number">0</span>)&#123;</div><div class="line">    unique_lock&lt;mutex&gt; lock(mu);</div><div class="line">    q.push_front(count);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"produce data: "</span> &lt;&lt; count &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    lock.unlock();</div><div class="line">    cv.notify_one();</div><div class="line">    count--;</div><div class="line">    this_thread::sleep_for(chrono::seconds(<span class="number">1</span>));</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">consumer</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">int</span> data = <span class="number">0</span>;</div><div class="line">  <span class="keyword">while</span>(data != <span class="number">1</span>)&#123;</div><div class="line">    unique_lock&lt;mutex&gt; lock(mu);</div><div class="line">    cv.wait(lock, []()&#123;<span class="keyword">return</span> !q.empty();&#125;); <span class="comment">// prevent spurious wake</span></div><div class="line">    data = q.back();</div><div class="line">    q.pop_back();</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"consume data: "</span> &lt;&lt; data &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    lock.unlock();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="function">thread <span class="title">t1</span><span class="params">(producer)</span></span>;</div><div class="line">  <span class="function">thread <span class="title">t2</span><span class="params">(consumer)</span></span>;</div><div class="line">  t1.join();</div><div class="line">  t2.join();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-linux-commands" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/15/linux-commands/">linux commands</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/12/15/linux-commands/" class="article-date">
+  <time datetime="2016-12-15T12:40:43.000Z" itemprop="datePublished">2016-12-15</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The first lines of a file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">head -2 filename</div><div class="line">awk &apos;FNR&lt;=2&apos; filename</div><div class="line">awk &apos;NR&lt;=2 &#123;print&#125;&apos; filename</div></pre></td></tr></table></figure></p>
+<p>The nth (starting from 1) line of a file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">awk &apos;FNR=2&apos; filename</div><div class="line">awk &apos;NR=2 &#123;print&#125;&apos; filename</div></pre></td></tr></table></figure></p>
+<p>The last lines of a file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tail -2 filename</div></pre></td></tr></table></figure></p>
+<hr>
+<p>Given a file which each line is like: <code>person_name: say something</code>.<br>Find all <code>person_name</code> who mentioned ‘Kevin’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grep &apos;Kevin&apos; filename | sed &apos;s/\([^:].*\):.*&apos;/\1/g&apos; | uniq | sort</div><div class="line">sed -n &apos;/Kevin/p&apos; t.txt | sed &apos;s/\([^:].*\):.*/\1/g&apos; | uniq | sort</div></pre></td></tr></table></figure></p>
+<hr>
+<p>Get rid of all <code>&lt;&gt;</code> tags in a html file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed &apos;s/&lt;[^&gt;]*&gt;//g&apos; filename</div></pre></td></tr></table></figure></p>
+<hr>
+<p>Find valid phone numbers from a file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;/^([0-9]&#123;3&#125;-|\([0-9]&#123;3&#125;\) )[0-9]&#123;3&#125;-[0-9]&#123;4&#125;$/&apos; file.txt</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-npm-install-commands" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -128,7 +403,7 @@
       
         <p>There are two types of data in a component:</p>
 <ul>
-<li>props: get passed into a component as initialized; for example<br><code>ReactDom.render(&lt;MyList name=&quot;Kevin&quot;/&gt;, document.getElementById(&#39;app&#39;))</code><br>A component cannot update the props, all you can do is set the default value in <code>getDefaultProps</code> function in the component.</li>
+<li>props: get passed into a component as initialized; for example<br><code>ReactDOM.render(&lt;MyList name=&quot;Kevin&quot;/&gt;, document.getElementById(&#39;app&#39;))</code><br>A component cannot update the props, all you can do is set the default value in <code>getDefaultProps</code> function in the component.</li>
 <li>state: internally maintained and updated by the component.</li>
 </ul>
 <hr>
@@ -152,7 +427,7 @@
 <p>Some interesting syntax features of ES6.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">name</span>: <span class="string">'Kevin'</span>&#125;,</div><div class="line"><span class="keyword">var</span> obj2 = &#123;<span class="attr">age</span>: <span class="number">10</span>, ...obj1&#125;; <span class="comment">// insert a copy of obj1</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj3 = &#123;<span class="attr">name</span>: <span class="string">'Lily'</span>&#125;;</div><div class="line"><span class="keyword">var</span> &#123;name&#125; = obj3; <span class="comment">// var name = obj3.name;</span></div></pre></td></tr></table></figure></p>
 <p>A simple promise example:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addPromise</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> a === <span class="string">'number'</span> &amp;&amp; <span class="keyword">typeof</span> b === <span class="string">'number'</span>)&#123;</div><div class="line">      resolve(a+b);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      reject(<span class="string">'invalid types!'</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">addPromise(a,b).then(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise success:'</span>, res);</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise error'</span>, err);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <p>Arrow function pros:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> people = [<span class="string">'Andrew'</span>,<span class="string">'Jerry'</span>,<span class="string">'Mathew'</span>];</div><div class="line"><span class="keyword">var</span> Person = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Kevin'</span>,</div><div class="line">  <span class="attr">greet</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    people.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> says hello to <span class="subst">$&#123;item&#125;</span>`</span>);</div><div class="line">    &#125;)</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">greet1</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    people.forEach(<span class="function">(<span class="params">item</span>)=&gt;</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> says hello to <span class="subst">$&#123;item&#125;</span>`</span>);</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">Person.greet(); <span class="comment">// undefined says hello to ...</span></div><div class="line">Person.greet1(); <span class="comment">// Kevin says hello to ...</span></div></pre></td></tr></table></figure></p>
-<p>filter<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.filter(<span class="function">(<span class="params">item</span>)=&gt;</span>item!==<span class="number">1</span>)   <span class="comment">// [2,3]</span></div><div class="line">a.filter(<span class="function">(<span class="params">item</span>)=&gt;</span>&#123;item!==<span class="number">1</span>&#125;) <span class="comment">// []</span></div></pre></td></tr></table></figure></p>
+<p>filter<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.filter(<span class="function">(<span class="params">item</span>)=&gt;</span>item!==<span class="number">1</span>)   <span class="comment">// [2,3]</span></div><div class="line">a.filter(<span class="function">(<span class="params">item</span>)=&gt;</span>&#123;item!==<span class="number">1</span>&#125;) <span class="comment">// []</span></div></pre></td></tr></table></figure></p>
 <hr>
 <p>Component life cycles<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">componentDidUpdate: <span class="function"><span class="keyword">function</span>(<span class="params">preProps, preState</span>)</span>&#123;&#125;</div><div class="line">componentWillUpdate: <span class="function"><span class="keyword">function</span>(<span class="params">nextProps, nextState</span>)</span>&#123;&#125;</div><div class="line">componentWillMount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">componentDidMount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">componentWillUnmount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">componentWillReceiveProps: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div></pre></td></tr></table></figure></p>
 
@@ -315,6 +590,9 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">section</span>&#123;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">0</span> auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<hr>
+<p><a href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="external">Horizontally and vertically centering</a> </p>
+<p><a href="http://codepen.io/fieldsfarmer/pen/jVeVRd" target="_blank" rel="external">my example</a></p>
 
       
     </div>
@@ -338,245 +616,8 @@
 
 
     
-      <article id="post-rate-checker" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/04/rate-checker/">rate checker</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/11/04/rate-checker/" class="article-date">
-  <time datetime="2016-11-04T21:36:07.000Z" itemprop="datePublished">2016-11-04</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> collections</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RateChecker</span><span class="params">(object)</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,q,n)</span>:</span></div><div class="line">    self.dq = collections.deque()</div><div class="line">    self.q = q</div><div class="line">    self.n = n</div><div class="line">    </div><div class="line"><span class="comment"># if in q seconds, has more than n requests, then true;</span></div><div class="line"><span class="comment"># otherwise, false</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(self)</span>:</span></div><div class="line">    t = time.time()</div><div class="line">    self.dq.append(t)</div><div class="line">    <span class="keyword">if</span> len(self.dq) &lt; self.n:</div><div class="line">      <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    last = self.dq.popleft()</div><div class="line">    <span class="keyword">return</span> t-last &lt; self.q</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">  rc = RateChecker(<span class="number">1</span>,<span class="number">3</span>)</div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">    <span class="keyword">print</span> rc.check()</div><div class="line">    time.sleep(<span class="number">0.1</span>)</div><div class="line">  time.sleep(<span class="number">1.7</span>)</div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">    <span class="keyword">print</span> rc.check()</div><div class="line">    time.sleep(<span class="number">0.1</span>)</div><div class="line"></div><div class="line"><span class="comment">#False False True False False True True</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">  main()</div></pre></td></tr></table></figure>
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-implement-getElementsByClassName" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/03/implement-getElementsByClassName/">implement getElementsByClassName</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/11/03/implement-getElementsByClassName/" class="article-date">
-  <time datetime="2016-11-03T20:51:54.000Z" itemprop="datePublished">2016-11-03</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myImplementation</span>(<span class="params">className</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> docBody = <span class="built_in">document</span>.body;</div><div class="line">  <span class="keyword">var</span> res = [];</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">walk</span>(<span class="params">node, func</span>)</span>&#123;</div><div class="line">    func(node);</div><div class="line">    node = node.firstChild;</div><div class="line">    <span class="keyword">while</span>(node)&#123;</div><div class="line">      walk(node, func);</div><div class="line">      node = node.nextSibling;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  walk(docBody, <span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(node.classList &amp;&amp; node.classList.contains(className))&#123;</div><div class="line">      res.push(node);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://stackoverflow.com/questions/33264842/implementing-getelementsbyclassname-recursively" target="_blank" rel="external">ref</a></p>
-
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-reservoir-sample" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/31/reservoir-sample/">reservoir sample</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/10/31/reservoir-sample/" class="article-date">
-  <time datetime="2016-11-01T00:54:22.000Z" itemprop="datePublished">2016-10-31</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://en.wikipedia.org/wiki/Reservoir_sampling" target="_blank" rel="external">Algorithm R</a><br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">reservoir_sample</span><span class="params">(arr, k)</span>:</span></div><div class="line">  res = []</div><div class="line">  t = []</div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</div><div class="line">    t.append(arr[i]);</div><div class="line">  res.append(t)</div><div class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> range(k,len(arr)):</div><div class="line">    t = list(t)</div><div class="line">    i = random.randint(<span class="number">0</span>,j)</div><div class="line">    <span class="keyword">if</span> i&lt;k:</div><div class="line">      t[i]=arr[j]</div><div class="line">    res.append(t)</div><div class="line">  <span class="keyword">return</span> res</div><div class="line">arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>]</div><div class="line">print(reservoir_sample(arr, <span class="number">2</span>))</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-flatten-array" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/31/flatten-array/">flatten array</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/10/31/flatten-array/" class="article-date">
-  <time datetime="2016-10-31T23:06:44.000Z" itemprop="datePublished">2016-10-31</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//recursive ways</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> res = [];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;arr.length; ++i)&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(arr[i]))&#123;</div><div class="line">      res = res.concat(f1(arr[i]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      res.push(arr[i])</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="comment">//ES6</span></div><div class="line"><span class="keyword">const</span> f2 = <span class="function">(<span class="params">arr</span>)=&gt;</span>arr.reduce(a,b)=&gt;a.concat(<span class="built_in">Array</span>.isArray(b)?f2(b):b, []);</div><div class="line"></div><div class="line"><span class="comment">//iterative way</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> list = arr.slice(),</div><div class="line">    res = [];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> node = list.shift(); node !== <span class="literal">undefined</span>; node = list.shift())&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(node))&#123;</div><div class="line">      [].unshift.apply(list, node);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      res.push(node);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> arr = <span class="keyword">var</span> arr = [[[<span class="number">1</span>],<span class="string">'a'</span>],[&#123;<span class="string">'b'</span>:<span class="number">1</span>&#125;,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>],[<span class="number">5</span>,[<span class="number">6</span>,[<span class="number">7</span>]]]];</div><div class="line">f1(arr); <span class="comment">//[ 1, 'a', &#123; b: 1 &#125;, 2, 3, 4, 5, 6, 7 ]</span></div></pre></td></tr></table></figure>
-<p><a href="http://stackoverflow.com/questions/27266550/how-to-flatten-nested-array-in-javascript" target="_blank" rel="external">ref</a></p>
-
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
-      <article id="post-js-async-forEach" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/25/js-async-forEach/">js async forEach</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/10/25/js-async-forEach/" class="article-date">
-  <time datetime="2016-10-26T03:22:16.000Z" itemprop="datePublished">2016-10-25</time>
-</a>
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">'underscore'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncForEach</span>(<span class="params">arr,iterator,callback</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> callOnce = _.once(callback), remaining = arr.length;</div><div class="line">  arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    iterator(item, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">      remaining -= <span class="number">1</span>;</div><div class="line">      <span class="keyword">if</span>(err || remaining === <span class="number">0</span>)&#123;</div><div class="line">        callOnce(err);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncForEach</span>(<span class="params">arr,iterator,callback</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> callOnce = _.once(callback), remaining = arr.length;</div><div class="line">  arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    iterator(item, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">      remaining -= <span class="number">1</span>;</div><div class="line">      <span class="keyword">if</span>(err)&#123;</div><div class="line">        remaining = <span class="number">0</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span>(remaining === <span class="number">0</span>)&#123;</div><div class="line">        callOnce(err);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">asyncForEach([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],<span class="function"><span class="keyword">function</span>(<span class="params">item, callback</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">  callback(<span class="literal">null</span>);</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'done'</span>)</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// 3</span></div><div class="line"><span class="comment">// done</span></div></pre></td></tr></table></figure>
-<p>An interesting fact;<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;list.length; ++i)&#123;</div><div class="line">    <span class="keyword">if</span>(list[i]==<span class="number">1</span>)&#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(list[i]);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">printExcept1</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(item == <span class="number">1</span>)&#123;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(item);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> list = [<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;list.length; ++i)&#123;</div><div class="line">    printExcept1(list[i]);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> list = [<span class="number">1</span>,<span class="number">6</span>,<span class="number">7</span>];</div><div class="line">  list.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(item == <span class="number">1</span>)&#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(item);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line">f1(); <span class="comment">// nothing</span></div><div class="line">f2(); <span class="comment">// 4 5</span></div><div class="line">f3(); <span class="comment">// 6 7</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myForEach</span>(<span class="params">list,callback</span>)</span>&#123;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;list.length; ++i)&#123;</div><div class="line">    callback.call(list,i);</div><div class="line">    <span class="comment">//callback.call(list[i],i);</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> list = [<span class="number">1</span>,<span class="number">8</span>,<span class="number">9</span>];</div><div class="line">myForEach(list, <span class="function"><span class="keyword">function</span>(<span class="params">idex</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(list[idex] == <span class="number">1</span>)&#123;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(list[idex]);</div><div class="line">  &#125;</div><div class="line">&#125;)  <span class="comment">// 8 9</span></div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    
-      <footer class="article-footer">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-      </footer>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-    
       <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
       </nav>
     </section>
     <footer id="footer">
