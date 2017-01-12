@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hash map - my westworld</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="A simple implementation using separate chaining, ref.123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hash map">
+<meta property="og:url" content="https://fieldsfarmer.github.io/2016/12/31/hash-map/index.html">
+<meta property="og:site_name" content="my westworld">
+<meta property="og:description" content="A simple implementation using separate chaining, ref.123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778">
+<meta property="og:updated_time" content="2017-01-01T14:51:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hash map">
+<meta name="twitter:description" content="A simple implementation using separate chaining, ref.123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/atom.xml">Rss</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://fieldsfarmer.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-hash-map" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hash map
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/12/31/hash-map/" class="article-date">
+  <time datetime="2017-01-01T01:38:22.000Z" itemprop="datePublished">2016-12-31</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>A simple implementation using separate chaining, <a href="https://medium.com/@aozturk/simple-hash-map-hash-table-implementation-in-c-931965904250#.m7j76vce2" target="_blank" rel="external">ref</a>.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdexcept&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="keyword">using</span> space <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> K, <span class="keyword">typename</span> V&gt;</div><div class="line"><span class="keyword">struct</span> node&#123;</div><div class="line">  K key; V value; node * next;</div><div class="line">  node(<span class="keyword">const</span> K&amp; k, <span class="keyword">const</span> V&amp; v):key(k),value(v),next(<span class="literal">NULL</span>)&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> TABLE_SIZE = <span class="number">101</span>;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> K, <span class="keyword">typename</span> V, <span class="keyword">typename</span> F&gt;</div><div class="line"><span class="keyword">class</span> sc_hash_map&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  sc_hash_map(<span class="keyword">unsigned</span> <span class="keyword">long</span> sz = TABLE_SIZE):_size(sz)&#123;</div><div class="line">    _table = <span class="keyword">new</span> node&lt;K, V&gt;*[_size];</div><div class="line">  &#125;</div><div class="line">  ~sc_hash_map()&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;_size; ++i)&#123;</div><div class="line">      <span class="keyword">auto</span> entry = _table[i];</div><div class="line">      <span class="keyword">while</span>(entry)&#123;</div><div class="line">        <span class="keyword">auto</span> prev = entry;</div><div class="line">        entry = entry-&gt;next;</div><div class="line">        <span class="keyword">delete</span> prev;</div><div class="line">      &#125;</div><div class="line">      _table[i] = <span class="literal">NULL</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">delete</span>[] table;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">const</span> V&amp; <span class="title">get</span><span class="params">(<span class="keyword">const</span> K&amp; k)</span></span>&#123;</div><div class="line">    <span class="keyword">auto</span> index = _hash_func(k);</div><div class="line">    <span class="keyword">auto</span> entry = _table[index];</div><div class="line">    <span class="keyword">while</span>(entry)&#123;</div><div class="line">      <span class="keyword">if</span>(entry-&gt;key == k)&#123;</div><div class="line">        <span class="keyword">return</span> entry-&gt;value;</div><div class="line">      &#125;</div><div class="line">      entry = entry-&gt;next;</div><div class="line">    &#125;</div><div class="line">    <span class="function">raise <span class="title">out_of_range</span><span class="params">(<span class="string">"invalid key"</span>)</span></span>;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">const</span> K&amp; k, <span class="keyword">const</span> V&amp; v)</span></span>&#123;</div><div class="line">    <span class="keyword">auto</span> index = _hash_func(k);</div><div class="line">    <span class="keyword">auto</span> entry = _table[index];</div><div class="line">    <span class="keyword">while</span>(entry &amp;&amp; entry-&gt;key != k)&#123;</div><div class="line">      <span class="keyword">auto</span> prev = entry;</div><div class="line">      entry = entry-&gt;next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(!entry)&#123;</div><div class="line">      entry = <span class="keyword">new</span> node&lt;K,V&gt;(k,v);</div><div class="line">      <span class="keyword">auto</span> tmp = _table[index];</div><div class="line">      _table[index] = entry;</div><div class="line">      entry-&gt;next = tmp;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      entry-&gt;value = v;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">const</span> K&amp; k)</span></span>&#123;</div><div class="line">    <span class="keyword">auto</span> index = _hash_func(k);</div><div class="line">    <span class="keyword">auto</span> entry = _table[index];</div><div class="line">    node&lt;K,V&gt;* prev = <span class="literal">NULL</span>;</div><div class="line">    <span class="keyword">while</span>(entry &amp;&amp; entry-&gt;key != k)&#123;</div><div class="line">      prev = entry;</div><div class="line">      entry = entry-&gt;next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(!entry)&#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">if</span>(_table[index] == entry)&#123;</div><div class="line">        _table[index] = entry-&gt;next;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        prev-&gt;next = entry-&gt;next;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">delete</span> entry;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">  node&lt;K, V&gt; ** _table;</div><div class="line">  F _hash_func;</div><div class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> _size;</div><div class="line">&#125;</div><div class="line"><span class="keyword">struct</span> my_hash_func&#123;</div><div class="line">  <span class="function"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; k)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> k%TABLE_SIZE;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  sc_hash_table&lt;<span class="keyword">int</span>, <span class="built_in">string</span>, my_hash_func&gt; mp;</div><div class="line">  mp.insert(<span class="number">1</span>, <span class="string">"hello"</span>);</div><div class="line">  mp.insert(<span class="number">2</span>, <span class="string">"world"</span>);</div><div class="line">  mp.insert(<span class="number">102</span>, <span class="string">"nihao"</span>);</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; mp.get(<span class="number">1</span>) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>open addressing<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">enum</span> STATE &#123;EMPTY, OCCUPIED, DELETED&#125;;</div><div class="line"><span class="keyword">int</span> TABLE_SIZE = <span class="number">101</span>;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> K, <span class="keyword">typename</span> V, <span class="keyword">typename</span> F&gt;</div><div class="line"><span class="keyword">class</span> lp_hash_map&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  lp_hash_map(<span class="keyword">unsigned</span> <span class="keyword">long</span> sz = TABLE_SIZE):_size(sz)&#123;</div><div class="line">    _table = <span class="keyword">new</span> pair&lt;K, V&gt;[_size];</div><div class="line">    _state = <span class="keyword">new</span> STATE[_size];</div><div class="line">  &#125;</div><div class="line">  ~lp_hash_map()&#123;</div><div class="line">    <span class="keyword">delete</span>[] _table;</div><div class="line">    <span class="keyword">delete</span>[] _state;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">find_index</span><span class="params">(<span class="keyword">const</span> K&amp; k)</span></span>&#123;</div><div class="line">    <span class="keyword">auto</span> index = _hash_func(k);</div><div class="line">    <span class="keyword">auto</span> start = index;</div><div class="line">    <span class="keyword">while</span>(_state[index] != EMPTY)&#123;</div><div class="line">      <span class="keyword">if</span>(_state[index] == OCCUPIED &amp;&amp; _table[index].first == k)</div><div class="line">        <span class="keyword">return</span> index;</div><div class="line">      index = (index + <span class="number">1</span>)%_size;</div><div class="line">      <span class="keyword">if</span>(index == start) <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="function">V&amp; <span class="title">get</span><span class="params">(<span class="keyword">const</span> K&amp; k)</span></span>&#123;</div><div class="line">    <span class="keyword">auto</span> index = find_index(k);</div><div class="line">    <span class="keyword">if</span>(index &lt; <span class="number">0</span>)&#123;</div><div class="line">      <span class="keyword">throw</span> out_of_range(<span class="string">"invalid key!"</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> _table[index].second;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">const</span> K&amp; k, <span class="keyword">const</span> V&amp; v)</span></span>&#123;</div><div class="line">    <span class="keyword">auto</span> index = _hash_func(k);</div><div class="line">    <span class="keyword">auto</span> start = index;</div><div class="line">    <span class="keyword">while</span>(_state[index] == OCCUPIED &amp;&amp; _table[index].first != k)&#123;</div><div class="line">      index = (index + <span class="number">1</span>)%_size;</div><div class="line">      <span class="keyword">if</span>(index == start) <span class="keyword">throw</span> out_of_range(<span class="string">"full!"</span>);</div><div class="line">    &#125;</div><div class="line">    _table[index] = make_pair(k, v);</div><div class="line">    _state[index] = OCCUPIED;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">const</span> K&amp; k)</span></span>&#123;</div><div class="line">    <span class="keyword">auto</span> index = find_index(k);</div><div class="line">    <span class="keyword">if</span>(index &lt; <span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">    _state[index] = DELETED;</div><div class="line">  &#125;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">  F _hash_func;</div><div class="line">  pair&lt;K, V&gt;* _table;</div><div class="line">  STATE* _state;</div><div class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> _size;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">struct</span> MyKeyHash &#123;</div><div class="line">  <span class="function"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; k)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> k % TABLE_SIZE;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">  lp_hash_map&lt;<span class="keyword">int</span>, <span class="built_in">string</span>, MyKeyHash&gt; mp;</div><div class="line">  mp.insert(<span class="number">1</span>,<span class="string">"hello"</span>);</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; mp.get(<span class="number">1</span>) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  mp.insert(<span class="number">2</span>,<span class="string">"world"</span>);</div><div class="line">  mp.insert(<span class="number">1</span>,<span class="string">"nihao"</span>);</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; mp.get(<span class="number">1</span>) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  mp.remove(<span class="number">1</span>);</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; mp.get(<span class="number">1</span>) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/01/thread-safe-stack/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+        
+          thread safe stack
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/31/reverse-string/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">reverse string&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 fieldsfarmer&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
