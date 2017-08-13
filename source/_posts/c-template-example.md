@@ -3,6 +3,7 @@ title: c++ template example
 date: 2016-12-23
 tags: [c++]
 ---
+<!-- more -->
 ```cpp
 #include<iostream>
 #include<string>

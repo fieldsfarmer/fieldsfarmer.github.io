@@ -4,7 +4,7 @@ date: 2016-12-31
 tags: [c++]
 categories: data structure
 ---
-<escape><!-- more --></escape>
+<!-- more -->
 A simple implementation using separate chaining, [ref](https://medium.com/@aozturk/simple-hash-map-hash-table-implementation-in-c-931965904250#.m7j76vce2).
 ```cpp
 #include<stdexcept>
