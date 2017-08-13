@@ -2,6 +2,7 @@
 title: c++ template example
 date: 2016-12-23
 tags: [c++]
+categories: programming languages
 ---
 <!-- more -->
 ```cpp
