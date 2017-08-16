@@ -87,6 +87,7 @@ def back_pack_3_1(m,A,V):
 ```
 Following the above, but infinite times
 ```python
+# dp[i+1][j] = max(dp[i+1][j], dp[i+1][j-A[i]]+V[i])
 def back_pack_4(m,A,V):
   dp = [0]*(m+1)
   for i in range(len(A)):
