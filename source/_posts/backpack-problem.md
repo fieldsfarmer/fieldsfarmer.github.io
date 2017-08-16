@@ -4,39 +4,150 @@ date: 2017-08-16 09:03:18
 tags: [python, algorithm]
 categories: algorithms
 ---
-1. Given n items with size A[i], an integer m denotes the size of a backpack. How full you can fill this backpack?
-If we have 4 items with size [2, 3, 5, 7], the backpack size is 11, we can select [2, 3, 5], so that the max size we can fill this backpack is 10. If the backpack size is 12. we can select [2, 3, 7] so that we can fulfill the backpack.
+# Type 1: only size matters
+Given items with size `A[i]`, an integer `m` denotes the size of a backpack. How full you can fill this backpack? Each item can only be used for once.
 ```python
-def backPack1(self, m, A):
-    l = len(A)
-    # f = [[False]*(m+1) for _ in range(l+1)]
-    ### f[i][j] is true if can find items in A[:i] such that
-    ###  the total size is j
-    # f[0][0] = True
-    # for i in range(l):
-    #     for j in range(m+1):
-    #         f[i+1][j] = f[i][j]
-    #         if A[i]<=j and f[i][j-A[i]]:
-    #             f[i+1][j] = True
-    # for j in range(m,-1,-1):
-    #     if f[l][j]:
-    #         return j
-    # return 0
-    ### optimized verison ####
-    dp = [False]*(m+1)
+def back_pack_1(m,A):
+  dp = [[False]*(m+1) for _ in range(len(A)+1)]
+  dp[0][0]=True
+  for i in range(len(A)):
+    for j in range(m+1):
+      dp[i+1][j]=dp[i][j]
+      if j>=A[i] and dp[i][j-A[i]]:
+        dp[i+1][j]=True
+  for i in range(m,-1,-1):
+    if dp[len(A)][i]:
+      return i
+  return 0
+# space optimized
+def back_pack_1_1(m,A):
+  dp = [False]*(m+1)
+  tmp = [False]*(m+1)
+  dp[0] = True
+  for i in range(len(A)):
+    for j in range(m+1):
+      tmp[j]=dp[j]
+      if A[i]<=j and dp[j-A[i]]:
+        tmp[j] = True
+    dp = tmp
     tmp = [False]*(m+1)
-    dp[0] = True
-
-    for i in range(l):
-        for j in range(m+1):
-            tmp[j]=dp[j]
-            if A[i]<=j and dp[j-A[i]]:
-                tmp[j] = True
-        dp = tmp
-        tmp = [False]*(m+1)
-
-    for j in range(m,-1,-1):
-        if dp[j]:
-            return j
-    return 0
+  for j in range(m,-1,-1):
+    if dp[j]:
+      return j
+  return 0
 ```
+Following the above, but item can be used for infinite times
+```python
+def back_pack_2(m,A):
+  dp = [[False]*(m+1) for _ in range(len(A)+1)]
+  dp[0][0]=True
+  for i in range(len(A)):
+    for j in range(m+1):
+      dp[i+1][j]=dp[i][j]
+      if j>=A[i] and dp[i+1][j-A[i]]:
+        dp[i+1][j]=True
+  for i in range(m,-1,-1):
+    if dp[len(A)][i]:
+      return i
+  return 0
+
+def back_pack_2_1(m,A):
+  dp=[False]*(m+1)
+  dp[0]=True
+  for i in range(len(A)):
+    for j in range(m+1):
+      if j>=A[i] and dp[j-A[i]]:
+        dp[j]=True
+  for i in range(m,-1,-1):
+    if dp[i]:
+      return i
+  return 0
+```
+---
+# Type 2: size and value
+Given items with size `A[i]` and value `V[i]`, and a backpack with size `m`.
+What's the maximum value can you put into the backpack?
+```python
+def back_pack_3(m,A,V):
+  dp = [[0]*(m+1) for _ in range(len(A)+1)]
+  for i in range(len(A)):
+    for j in range(m+1):
+      dp[i+1][j]=dp[i][j]
+      if j>=A[i]:
+        dp[i+1][j]=max(dp[i+1][j], dp[i][j-A[i]]+V[i])
+  return dp[len(A)][m]
+
+def back_pack_3_1(m,A,V):
+  dp = [0]*(m+1)
+  for i in range(len(A)):
+    for j in range(m,-1,-1):
+      if j >= A[i]:
+        dp[j] = max(dp[j], dp[j-A[i]]+V[i])
+  return dp[m]
+```
+Following the above, but infinite times
+```python
+def back_pack_4(m,A,V):
+  dp = [0]*(m+1)
+  for i in range(len(A)):
+    for j in range(m+1):
+      if j>=A[i]:
+        dp[j]=max(dp[j],dp[j-A[i]]+V[i])
+  return dp[m]
+```
+# Type 1.1: how many ways to fill
+```python
+def back_pack_5(m, A):
+  dp=[[0]*(m+1) for _ in range(len(A)+1)]
+  dp[0][0]=1
+  for i in range(len(A)):
+    for j in range(m+1):
+      dp[i+1][j]=dp[i][j]
+      if j>=A[i]:
+        dp[i+1][j]+=dp[i][j-A[i]]
+  return dp[len(A)][m]
+```
+Follow up: each item may be chosen unlimited number of times
+```python
+def back_pack_6(m, A):
+  dp=[[0]*(m+1) for _ in range(len(A)+1)]
+  dp[0][0]=1
+  for i in range(len(A)):
+    for j in range(m+1):
+      dp[i+1][j]=dp[i][j]
+      if j>=A[i]:
+        dp[i+1][j]+=dp[i+1][j-A[i]]
+  return dp[len(A)][m]
+
+def back_pack_6_1(m,A):
+	dp=[0]*(m+1)
+  dp[0]=1
+  for i in range(len(A)):
+    for j in range(m+1):
+      if j>=A[i]:
+        dp[j]+=dp[j-A[i]]
+  return dp[m]
+```
+# Type 1.2: slightly different
+Given an array of positive numbers and no duplicates, find the number of possible combinations that add up to a positive integer target.
+```python
+# Given A = [1, 2, 4], m = 4
+# # The possible combination ways are:
+# [1, 1, 1, 1]
+# [1, 1, 2]
+# [1, 2, 1]
+# [2, 1, 1]
+# [2, 2]
+# [4]
+
+def back_pack_7(m, A):
+  dp=[0]*(m+1)
+  dp[0]=1
+  for i in range(m+1):
+    for j in range(len(A)):
+      if i>=A[j]:
+        dp[i]+=dp[i-A[j]]
+  return dp[m]
+
+```
+[ref](http://love-oriented.com/pack/Index.html)
